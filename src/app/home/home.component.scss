@@ -1,0 +1,114 @@
+@import "src/assets/variables";
+
+.hero {
+  width: 100%;
+  height: 100vh;
+}
+
+.navigation {
+  width: 100%;
+}
+
+.button {
+  padding: 1rem 2.5rem;
+  border-radius: 1rem;
+  font-size: $textMedium;
+  font-weight: 500;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+  }
+
+  &:focus {
+    outline: none;
+    transform: scale(1);
+  }
+}
+
+.nav {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem;
+
+  &__logo {
+    font-size: 3rem;
+    text-decoration: none;
+    color: $text-color-primary;
+    font-weight: 400;
+  }
+
+  &__sign-in {
+    background: transparent;
+    border: 3px solid $primary-blue;
+    color: $primary-blue;
+    transition: all .3s;
+
+    &:hover {
+      background: $primary-blue;
+      color: $color-light-primary;
+    }
+  }
+}
+
+.content {
+  display: flex;
+  padding: 3rem 7rem;
+  width: 100%;
+}
+
+.left{
+  width: 30%;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  padding-top: 3rem;
+}
+
+.content-left {
+  width: 100%;
+  &__header {
+    font-size: 6.5rem;
+    margin: 0 0 2rem 0;
+
+    &--color{
+      color: $primary-blue;
+    }
+  }
+
+  &__text {
+    width: 60%;
+    font-size: $textLarge;
+    margin: 0 0 2rem 0;
+  }
+
+  &__button {
+    background: $primary-blue;
+    color: $color-light-primary;
+    border: none;
+    transition: all .3s;
+
+    &:hover {
+      background: darken($primary-blue, 10);
+
+    }
+
+  }
+}
+
+.right {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__hero-img {
+    height: 50rem;
+  }
+}
+
+
+
+
