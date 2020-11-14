@@ -5,6 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HomeModule} from "./home/home.module";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import {SignInModule} from "./sign-in/sign-in.module";
+import {SignUpModule} from "./sign-up/sign-up.module";
 
 @NgModule({
   declarations: [
@@ -14,7 +18,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    HomeModule
+    HomeModule,
+    SignInModule,
+    SignUpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
