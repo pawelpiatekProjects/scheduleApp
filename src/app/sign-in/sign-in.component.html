@@ -1,1 +1,32 @@
-<p>sign-in works!</p>
+<div class="sign-in">
+  <div class="left">
+    <div class="left-content">
+      <h1 class="left-content__header">Just a few clicks <br>
+        to create an account
+      </h1>
+      <img src="../../assets/images/svg/sign-in-hero.svg" alt="sign in hero image" class="left-content__hero">
+    </div>
+  </div>
+  <div class="right">
+    <div class="right-content">
+      <h1 class="right-content__header-primary">Login</h1>
+      <h4 class="right-content__header-secondary">Log in to your account</h4>
+      <p class="right-content__text">
+        Thank you for joining our awesome schedule app. <br> We hope that you will be satisfied
+      </p>
+      <form #f="ngForm" (ngSubmit)="onSignIn(f)" class="sign-in-form">
+        <div class="sign-in-form__item">
+          <label for="email">E-mail</label>
+          <input type="text" id="email" name="email" ngModel placeholder="Enter your E-mail" required>
+        </div>
+        <div class="sign-in-form__item">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" ngModel required
+                 placeholder="Enter your Password, at least 8 characters">
+        </div>
+        <button class="sign-in-form__forgot-password">Forgot password?</button>
+        <button class="sign-in-form__submit">Sign In</button>
+      </form>
+    </div>
+  </div>
+</div>
