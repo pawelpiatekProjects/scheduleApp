@@ -1,1 +1,61 @@
-<p>sign-up works!</p>
+<div class="sign-up">
+  <div class="left">
+    <div class="left-content">
+      <h1 class="left-content__header">Just a few clicks <br>
+        to create an account
+      </h1>
+      <img src="../../assets/images/svg/sign-up-hero.svg" alt="" class="left-content__hero">
+    </div>
+  </div>
+  <div class="right">
+    <div class="right-content">
+      <h1 class="right-content__header-primary">Register</h1>
+      <h4 class="right-content__header-secondary">Create your own account</h4>
+      <p class="right-content__text">
+        Create an account and get the ability to manage your daily <br> schedule
+      </p>
+
+      <form #f="ngForm" (ngSubmit)="onSignIn(f)" class="sign-up-form">
+        <div class="sign-up-form__row">
+          <div class="sign-up-form__item">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+            <!--          <p>Please enter valid email</p>-->
+          </div>
+          <div class="sign-up-form__item">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" ngModel required>
+          </div>
+        </div>
+        <div class="sign-up-form__row">
+          <div class="sign-up-form__item">
+            <label for="email">E-mail</label>
+            <input type="text" id="email" name="email"  required>
+            <!--          <p>Please enter valid email</p>-->
+          </div>
+          <div class="sign-up-form__item">
+            <label for="phone">Phone Number</label>
+            <input type="text" id="phone" name="phone" ngModel required>
+          </div>
+        </div>
+        <div class="sign-up-form__row">
+          <div class="sign-up-form__item">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            <!--          <p>Please enter valid email</p>-->
+          </div>
+          <div class="sign-up-form__item">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" ngModel required>
+          </div>
+        </div>
+        <button class="sign-up-form__forgot-password">Forgot password?</button>
+        <button class="sign-up-form__submit">Sign In</button>
+        <div class="sign-up-form__create-new">
+          <p>Don't have an account yet?</p>
+          <a routerLink="/sign-up">Join us</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

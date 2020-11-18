@@ -114,5 +114,23 @@
         transform: scale(1);
       }
     }
+
+    &__create-new {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        font-size: $text-small;
+      }
+
+      a {
+        font-size: $text-small;
+        margin-left: .3rem;
+        text-decoration: none;
+        color: $primary-blue;
+      }
+    }
   }
 }
