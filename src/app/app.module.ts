@@ -9,6 +9,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import {SignInModule} from "./sign-in/sign-in.module";
 import {SignUpModule} from "./sign-up/sign-up.module";
+import { ButtonPrimaryComponent } from './components/UIComponents/button-primary/button-primary.component';
 
 @NgModule({
   declarations: [

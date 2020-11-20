@@ -83,5 +83,30 @@
       border: 2px solid $color-light-primary;
       border-radius: 1rem;
     }
+
   }
+
+  &__sign-in {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    p {
+      font-size: $text-small;
+    }
+
+    a {
+      font-size: $text-small;
+      margin-left: .3rem;
+      text-decoration: none;
+      color: $primary-blue;
+    }
+  }
+
+
+}
+
+.margin-bottom {
+  margin-bottom: 1.5rem;
 }

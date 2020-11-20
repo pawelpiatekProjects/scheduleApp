@@ -1,0 +1,24 @@
+@import "src/assets/variables";
+button {
+  padding: 1rem;
+  border-radius: 1rem;
+  font-size: $textMedium;
+  font-weight: 500;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+  }
+
+  &:focus {
+    outline: none;
+    transform: scale(1);
+  }
+}
+
+.button-blue {
+  background: $primary-blue;
+  color: $color-light-primary;
+  border: none;
+}
+

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from "@angular/forms";
 
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -13,8 +14,10 @@ export class SignUpComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSignIn(f: NgForm) {
 
+
+  onSignUp(f: NgForm) {
+    console.log('test')
   }
 
 }
