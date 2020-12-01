@@ -14,7 +14,7 @@ export class SignInComponent implements OnInit {
   }
 
   onSignIn(form: NgForm) {
-    console.log(form)
+    console.log(form.value.email.isValid)
 
   }
 

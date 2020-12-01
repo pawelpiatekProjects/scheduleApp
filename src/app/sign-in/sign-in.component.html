@@ -17,8 +17,8 @@
       <form #f="ngForm" (ngSubmit)="onSignIn(f)" class="sign-in-form">
         <div class="sign-in-form__item">
           <label for="email">E-mail</label>
-          <input type="text" id="email" name="email"  placeholder="Enter your E-mail" required>
-<!--          <p>Please enter valid email</p>-->
+          <input type="text" id="email" name="email" placeholder="Enter your E-mail" required ngModel email>
+          <!--          <p>Please enter valid email</p>-->
         </div>
         <div class="sign-in-form__item">
           <label for="password">Password</label>
