@@ -1,0 +1,19 @@
+.dashboard {
+  display: flex;
+
+  &__side-nav-wrapper {
+    width: 12.5%;
+  }
+
+  &__calendar-wrapper {
+    width: 35%;
+  }
+
+  &__schedule-wrapper {
+    width: 35%;
+  }
+
+  &__user-data-wrapper {
+    width: 17.5%;
+  }
+}
