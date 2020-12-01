@@ -1,0 +1,9 @@
+<div class="wrapper">
+  <h1 class="header">Today {{today}}</h1>
+  <ul class="hours">
+    <li class="hours__hour" *ngFor="let i of  hours">
+        <p class="hours__hour-header">{{i.hour}}</p>
+        <div class="hours__event"></div>
+    </li>
+  </ul>
+</div>
