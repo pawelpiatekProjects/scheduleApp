@@ -1,6 +1,6 @@
 <div class="wrapper">
   <div class="wrapper__left-content">
-    <h1 class="header">This week</h1>
+   <app-header-with-gold-corners text="This week" [date]="firstDay + ' - ' + lastDay"></app-header-with-gold-corners>
     <ul class="days">
       <li class="days__day" *ngFor="let i of days">
 
@@ -13,13 +13,7 @@
     </ul>
   </div>
   <div class="wrapper__right-content">
-    <!--    <h1 class="header">Schedule</h1>-->
-    <div class="select-event-info">
-      <div class="select-event-info__content">
-        <p class="select-event-info__header">Please Select Event</p>
-        <span class="material-icons select-event-info__icon">touch_app</span>
-      </div>
-    </div>
+    <app-dashed-border-area text="Day" icon="event"></app-dashed-border-area>
   </div>
 
 </div>

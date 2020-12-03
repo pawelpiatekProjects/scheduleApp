@@ -9,6 +9,8 @@ export class ThisWeekComponent implements OnInit {
 
   daysName = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
   days: {name: string, date: string}[] = [];
+  firstDay: string;
+  lastDay: string;
 
   constructor() { }
 
@@ -32,6 +34,8 @@ export class ThisWeekComponent implements OnInit {
   ngOnInit() {
     const todayNumber = new Date().getDay();
     this.initializeDaysArray(todayNumber);
+    this.firstDay = this.days[0].date.toString();
+    this.lastDay = this.days[this.days.length-1].date.toString();
   }
 
 }

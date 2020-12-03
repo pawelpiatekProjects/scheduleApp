@@ -1,0 +1,40 @@
+@import "src/assets/variables";
+.header {
+  font-weight: 400;
+  background: $color-white;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+  width: 80%;
+
+  &::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    display: inline-block;
+    background: transparent;
+    width: 4rem;
+    height: 4rem;
+    border-top: 4px solid $color-gold-primary;
+    border-left: 4px solid $color-gold-primary;
+  }
+
+  &::after {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    right: 0;
+    display: inline-block;
+    background: transparent;
+    width: 4rem;
+    height: 4rem;
+    border-bottom: 4px solid $color-gold-primary;
+    border-right: 4px solid $color-gold-primary;
+  }
+
+  span {
+    font-weight: 600;
+    color: $primary-blue;
+  }
+}

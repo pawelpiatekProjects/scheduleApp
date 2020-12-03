@@ -56,29 +56,3 @@
 
 }
 
-.select-event-info {
-  width: 80%;
-  height: 60%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  border: 1px dashed $color-light-secondary;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-
-  &__header {
-    text-align: center;
-    font-size: $textExtraLarge;
-    color: $color-light-secondary;
-  }
-
-  &__icon {
-    width: 100%;
-    text-align: center;
-    font-size: 6rem;
-    color: $color-light-secondary;
-  }
-}

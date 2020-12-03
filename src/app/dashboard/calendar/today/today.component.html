@@ -1,6 +1,6 @@
 <div class="wrapper">
   <div class="wrapper__left-content">
-    <h1 class="header">Today {{today}}</h1>
+    <app-header-with-gold-corners text="Today" [date]="today"></app-header-with-gold-corners>
     <ul class="hours">
       <li class="hours__hour" *ngFor="let i of  hours">
         <p class="hours__hour-header">{{i.hour}}</p>
@@ -9,13 +9,8 @@
     </ul>
   </div>
   <div class="wrapper__right-content">
-<!--    <h1 class="header">Schedule</h1>-->
-    <div class="select-event-info">
-      <div class="select-event-info__content">
-        <p class="select-event-info__header">Please Select Event</p>
-        <span class="material-icons select-event-info__icon">touch_app</span>
-      </div>
-    </div>
+
+    <app-dashed-border-area text="Event" icon="touch_app"></app-dashed-border-area>
   </div>
 
 </div>

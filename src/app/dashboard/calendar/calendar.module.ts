@@ -5,6 +5,7 @@ import {TodayComponent} from "./today/today.component";
 import {ThisWeekComponent} from "./this-week/this-week.component";
 import {NextWeekComponent} from "./next-week/next-week.component";
 import {AppRoutingModule} from "../../app-routing.module";
+import {UiModuleModule} from "../../components/UIComponents/ui-module.module";
 
 
 
@@ -14,6 +15,7 @@ import {AppRoutingModule} from "../../app-routing.module";
     CommonModule,
     CommonModule,
     AppRoutingModule,
+    UiModuleModule
   ],
   exports: [CalendarComponent]
 })
