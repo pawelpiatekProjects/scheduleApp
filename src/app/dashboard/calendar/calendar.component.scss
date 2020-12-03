@@ -9,13 +9,16 @@
 
 .buttons-wrapper {
   height: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .buttons-group {
 
-  width: 80%;
+  width: 50%;
 
-  margin: 3rem auto 0 auto;
+  //margin: 3rem auto 0 auto;
   background: $primary-blue;
   padding: 2.5px;
   border-radius: 1rem;
@@ -38,6 +41,15 @@
   &__button--active {
     background: $color-white;
     color: $text-color-primary;
+  }
+}
+
+.add-event {
+  &__button {
+    font-size: $text-small;
+    color: $primary-blue;
+    background: transparent;
+    border: none;
   }
 }
 

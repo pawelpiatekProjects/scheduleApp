@@ -2,8 +2,20 @@
 
 .wrapper {
   height: 100%;
-  overflow-y: scroll;
-  padding: 1rem;
+  display: flex;
+
+  &__left-content {
+    height: 100%;
+    overflow-y: scroll;
+    padding: 1rem;
+    width: 50%;
+  }
+  &__right-content {
+    height: 100%;
+    width: 50%;
+    padding: 3rem;
+    position: relative;
+  }
 }
 
 .hours {
@@ -30,6 +42,7 @@
     width: 15%;
     transition: all .3s;
     color: $color-light-secondary;
+    font-size: $textExtraSmall;
   }
 
   &__event {
@@ -37,7 +50,35 @@
     width: 85%;
     margin: .5rem;
     transition: all .3s;
+    height: 2rem;
   }
 
 
+}
+
+.select-event-info {
+  width: 80%;
+  height: 60%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  border: 1px dashed $color-light-secondary;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  &__header {
+    text-align: center;
+    font-size: $textExtraLarge;
+    color: $color-light-secondary;
+  }
+
+  &__icon {
+    width: 100%;
+    text-align: center;
+    font-size: 6rem;
+    color: $color-light-secondary;
+  }
 }
