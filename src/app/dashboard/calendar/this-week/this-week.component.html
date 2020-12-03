@@ -1,1 +1,25 @@
-<p>this-week works!</p>
+<div class="wrapper">
+  <div class="wrapper__left-content">
+    <h1 class="header">This week</h1>
+    <ul class="days">
+      <li class="days__day" *ngFor="let i of days">
+
+        <div class="days__day-header">
+          <h1>{{i.name}}</h1>
+          <p>{{i.date}}</p>
+        </div>
+          <h3 class="days__event-info">4 events</h3>
+      </li>
+    </ul>
+  </div>
+  <div class="wrapper__right-content">
+    <!--    <h1 class="header">Schedule</h1>-->
+    <div class="select-event-info">
+      <div class="select-event-info__content">
+        <p class="select-event-info__header">Please Select Event</p>
+        <span class="material-icons select-event-info__icon">touch_app</span>
+      </div>
+    </div>
+  </div>
+
+</div>
