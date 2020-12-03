@@ -45,12 +45,43 @@
 }
 
 .add-event {
+  display: flex;
   &__button {
-    font-size: $text-small;
-    color: $primary-blue;
     background: transparent;
     border: none;
+
+    span {
+      font-size: 2.8rem;
+      color: $primary-blue;
+      transition: all .5s;
+    }
+
   }
+  p {
+    opacity: 0;
+    transition: all .3s;
+    transform: scaleX(0);
+    transform-origin: left;
+    width: 4rem;
+    color: $primary-blue;
+    border-bottom: 2px solid $primary-blue;
+    font-size: $textMedium;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:hover button span {
+    transform: rotate(90deg);
+  }
+
+
+  &:hover p{
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
 }
 
 .content {
