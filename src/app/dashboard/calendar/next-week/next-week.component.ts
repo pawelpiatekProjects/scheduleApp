@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DatesService, Day} from "../../../services/dates.service";
 
 @Component({
   selector: 'app-next-week',
@@ -8,10 +9,19 @@ import { Component, OnInit } from '@angular/core';
 export class NextWeekComponent implements OnInit {
 
 
-  daysName = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
-  constructor() { }
+  days: Day[] =[];
+  firstDay: string;
+  lastDay: string;
+
+  constructor(private datesService: DatesService) { }
 
   ngOnInit() {
+    const today = new Date();
+    const thisDayNextWeek = new Date(today);
+    thisDayNextWeek.setDate(thisDayNextWeek.getDate() + 7);
+    this.days = this.datesService.setWeek(thisDayNextWeek);
+    this.firstDay = this.days[0].date;
+    this.lastDay = this.days[this.days.length-1].date;
   }
 
 }

@@ -13,8 +13,8 @@ export class DatesService {
     const daysArray: Day[] = [];
     const dayNumber = date.getDay();
     console.log('day number', dayNumber)
-    const today = new Date()
-    const monday =  new Date(today);
+
+    const monday =  new Date(date);
     if(dayNumber !== 1) {
       monday.setDate(monday.getDate() - dayNumber + 1);
     }

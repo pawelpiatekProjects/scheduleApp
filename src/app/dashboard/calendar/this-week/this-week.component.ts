@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DatesService} from "../../../services/dates.service";
+import {DatesService, Day} from "../../../services/dates.service";
 
 @Component({
   selector: 'app-this-week',
@@ -8,7 +8,7 @@ import {DatesService} from "../../../services/dates.service";
 })
 export class ThisWeekComponent implements OnInit {
 
-  days: {name: string, date: string}[] = [];
+  days: Day[] = [];
   firstDay: string;
   lastDay: string;
 
