@@ -27,7 +27,7 @@
   &__day {
     display: flex;
     width: 100%;
-    justify-content: start;
+    justify-content: space-between;
     align-items: center;
     transition: all .3s;
     border-bottom: 3px solid $color-light-primary;
@@ -46,10 +46,22 @@
       color: $color-white;
     }
 
-    &:hover h3 {
+    &:hover h3, &:hover span {
       color: $primary-blue;
     }
 
+    &:hover span {
+      font-size: 4rem;
+    }
+
+
+  }
+
+  &__dots {
+    font-size: 3rem;
+    padding: 0 3rem;
+    transition: all .3s;
+    color: $color-light-secondary;
   }
 
   &__event-info {

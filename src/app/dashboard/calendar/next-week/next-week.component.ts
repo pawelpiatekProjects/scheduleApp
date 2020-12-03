@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NextWeekComponent implements OnInit {
 
+
+  daysName = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
   constructor() { }
 
   ngOnInit() {

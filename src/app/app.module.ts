@@ -8,6 +8,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {SignInModule} from "./sign-in/sign-in.module";
 import {SignUpModule} from "./sign-up/sign-up.module";
 import {DashboardModule} from "./dashboard/dashboard.module";
+import {DatesService} from "./services/dates.service";
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import {DashboardModule} from "./dashboard/dashboard.module";
     SignUpModule,
     DashboardModule
   ],
-  providers: [],
+  providers: [DatesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

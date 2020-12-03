@@ -1,0 +1,110 @@
+@import "src/assets/variables";
+
+.wrapper {
+  height: 100%;
+  display: flex;
+
+  &__left-content {
+    height: 100%;
+    padding: 1rem;
+    width: 50%;
+    overflow-y: scroll;
+  }
+  &__right-content {
+    height: 100%;
+    width: 50%;
+    padding: 3rem;
+    position: relative;
+
+  }
+}
+
+
+
+.days {
+  width: 100%;
+
+  &__day {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    transition: all .3s;
+    border-bottom: 3px solid $color-light-primary;
+
+    &:hover {
+      cursor: pointer;
+      border-bottom-color: $primary-blue;
+      background: $color-light-primary;
+    }
+
+    &:hover div{
+      background: $primary-blue;
+    }
+
+    &:hover div p, &:hover div h1 {
+      color: $color-white;
+    }
+
+    &:hover h3, &:hover span {
+      color: $primary-blue;
+    }
+
+    &:hover span {
+      font-size: 4rem;
+    }
+
+
+  }
+
+  &__dots {
+    font-size: 3rem;
+    padding: 0 3rem;
+    transition: all .3s;
+    color: $color-light-secondary;
+  }
+
+  &__event-info {
+    margin-left: 3rem;
+    font-size: $text-small;
+    transition: all .3s;
+  }
+
+  &__day-header {
+    padding: .5rem;
+    margin: 1rem;
+    transition: all .3s;
+    clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+    width: 8.5rem;
+
+
+
+
+
+    h1 {
+      font-size: $textMedium;
+      font-weight: 400;
+      color: $text-color-primary;
+      margin: 0;
+      transition: all .3s;
+    }
+
+    p {
+      margin: .5rem 0;
+      font-size: $textExtraSmall;
+      color: $text-color-primary;
+      font-weight: 600;
+      transition: all .3s;
+    }
+  }
+
+  &__event {
+    border-bottom: 1px solid $color-light-secondary;
+    width: 85%;
+    margin: .5rem;
+    transition: all .3s;
+    height: 2rem;
+  }
+
+
+}
