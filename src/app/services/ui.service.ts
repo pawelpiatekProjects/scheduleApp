@@ -7,7 +7,7 @@ import {BehaviorSubject} from "rxjs";
 export class UiService {
 
   isBackdropOpen = new BehaviorSubject<boolean>(false);
-  formMode = new BehaviorSubject<string>(null);
+  formMode = new BehaviorSubject<'add' | 'edit' | 'delete'>(null);
 
   onOpenBackdrop():void {
     this.isBackdropOpen.next(true);
@@ -26,6 +26,11 @@ export class UiService {
   onOpenEditEvent(): void {
     this.onOpenBackdrop();
     this.formMode.next('edit');
+  }
+
+  onOpenDeleteEvent(): void {
+    this.onOpenBackdrop();
+    this.formMode.next('delete');
   }
 
 

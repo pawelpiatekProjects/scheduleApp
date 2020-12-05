@@ -18,8 +18,12 @@ export class ActiveCalendarDayComponent implements OnInit {
     this.day = this.activeDay.date.split('.').map(el => parseInt(el))[0].toString();
   }
 
-  onOpenEditForm():void {
+  onOpenEditForm(): void {
     this.uiService.onOpenEditEvent();
+  }
+
+  onOpenDeleteForm(): void {
+    this.uiService.onOpenDeleteEvent();
   }
 
 }

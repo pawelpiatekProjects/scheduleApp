@@ -17,7 +17,7 @@
           <p class="assignment__hour">8:00</p>
           <p class="assignment__name">Meeting</p>
           <div class="assignment__controls">
-            <button class="assignment__control assignment__control--delete">
+            <button class="assignment__control assignment__control--delete" (click)="onOpenDeleteForm()">
               <span class="material-icons">delete</span>
             </button>
             <button class="assignment__control assignment__control--edit" (click)="onOpenEditForm()">

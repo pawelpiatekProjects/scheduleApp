@@ -12,6 +12,9 @@ export class EventFormComponent implements OnInit, OnDestroy {
 
   formTitle: string;
   formModeSubscription: Subscription;
+  headerClass: string;
+  buttonClass: string;
+
 
   constructor(private uiService: UiService) { }
 
@@ -19,8 +22,16 @@ export class EventFormComponent implements OnInit, OnDestroy {
     this.formModeSubscription = this.uiService.formMode.subscribe(mode => {
       if(mode === 'add') {
         this.formTitle = 'Add';
-      } else {
+        this.headerClass = 'text-blue';
+        this.buttonClass = 'form__button--blue';
+      } else if(mode === 'edit') {
         this.formTitle = 'Edit';
+        this.headerClass = 'text-blue';
+        this.buttonClass = 'form__button--blue';
+      } else {
+        this.formTitle = 'Delete'
+        this.headerClass = 'text-red';
+        this.buttonClass = 'form__button--red';
       }
     })
   }

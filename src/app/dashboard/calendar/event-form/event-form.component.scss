@@ -1,8 +1,37 @@
 @import "src/assets/variables";
 
+@mixin color-button($color) {
+  background: transparent;
+  color: $color;
+  font-size: $textLarge;
+  border: none;
+  margin-top: 3rem;
+  position: relative;
+
+  &:hover::after{
+    transform: scaleX(1);
+    opacity: 1;
+  }
+
+  &::after {
+    position: absolute;
+    bottom: -1rem;
+    left: -.5rem;
+    width: 6rem;
+    height: .2rem;
+    display: inline-block;
+    content: '';
+    border-bottom: 2px solid $color;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: all .3s;
+    opacity: 0;
+  }
+}
+
 .form-wrapper {
   width: 40%;
-  height: 60%;
+  //height: 60%;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -14,10 +43,9 @@
     font-size: 3rem;
     font-weight: 400;
 
-    span {
-      color: $primary-blue;
-    }
+
   }
+
 }
 
 .form {
@@ -35,32 +63,27 @@
     }
   }
 
-  &__button {
-    background: transparent;
-    color: $primary-blue;
-    font-size: $textLarge;
-    border: none;
-    margin-top: 3rem;
-    position: relative;
-
-    &:hover::after{
-      transform: scaleX(1);
-      opacity: 1;
-    }
-
-    &::after {
-      position: absolute;
-      bottom: -1rem;
-      left: -.5rem;
-      width: 6rem;
-      height: .2rem;
-      display: inline-block;
-      content: '';
-      border-bottom: 2px solid $primary-blue;
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: all .3s;
-      opacity: 0;
-    }
+  &__button--blue {
+    @include color-button($primary-blue)
   }
+
+  &__button--red {
+    @include color-button($color-red-primary);
+  }
+
+  &__delete-info {
+    font-size: $textLarge;
+    text-align: center;
+  }
+
+  }
+
+
+
+.text-red {
+  color: $color-red-primary;
+}
+
+.text-blue {
+  color: $primary-blue;
 }
