@@ -1,0 +1,15 @@
+<div class="form-wrapper">
+  <h1 class="form-wrapper__header"><span>{{formTitle}}</span> Event</h1>
+  <form #f="ngForm" (ngSubmit)="onAdd(f)" class="form">
+    <div class="form__item">
+      <input type="text"  name="email" placeholder="Event name" required ngModel email>
+      <!--          <p>Please enter valid email</p>-->
+    </div>
+    <div class="form__item">
+      <input type="date" name="password" ngModel required
+             placeholder="Enter your Password, at least 8 characters">
+    </div>
+
+    <button class="form__button">Add</button>
+  </form>
+</div>

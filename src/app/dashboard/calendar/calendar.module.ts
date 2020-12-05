@@ -6,16 +6,19 @@ import {ThisWeekComponent} from "./this-week/this-week.component";
 import {NextWeekComponent} from "./next-week/next-week.component";
 import {AppRoutingModule} from "../../app-routing.module";
 import {UiModuleModule} from "../../components/UIComponents/ui-module.module";
+import { EventFormComponent } from './event-form/event-form.component';
+import {FormsModule} from "@angular/forms";
 
 
 
 @NgModule({
-  declarations: [CalendarComponent, TodayComponent, ThisWeekComponent, NextWeekComponent],
+  declarations: [CalendarComponent, TodayComponent, ThisWeekComponent, NextWeekComponent, EventFormComponent],
   imports: [
     CommonModule,
     CommonModule,
     AppRoutingModule,
-    UiModuleModule
+    UiModuleModule,
+    FormsModule
   ],
   exports: [CalendarComponent]
 })

@@ -1,0 +1,66 @@
+@import "src/assets/variables";
+
+.form-wrapper {
+  width: 40%;
+  height: 60%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: $color-white;
+  padding: 3rem;
+
+  &__header {
+    font-size: 3rem;
+    font-weight: 400;
+
+    span {
+      color: $primary-blue;
+    }
+  }
+}
+
+.form {
+  width: 80%;
+  margin: 5rem auto 0 auto;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+
+    input {
+      border: none;
+      border-bottom: 2px solid $text-color-primary;
+      margin: 1.5rem 0;
+    }
+  }
+
+  &__button {
+    background: transparent;
+    color: $primary-blue;
+    font-size: $textLarge;
+    border: none;
+    margin-top: 3rem;
+    position: relative;
+
+    &:hover::after{
+      transform: scaleX(1);
+      opacity: 1;
+    }
+
+    &::after {
+      position: absolute;
+      bottom: -1rem;
+      left: -.5rem;
+      width: 6rem;
+      height: .2rem;
+      display: inline-block;
+      content: '';
+      border-bottom: 2px solid $primary-blue;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: all .3s;
+      opacity: 0;
+    }
+  }
+}

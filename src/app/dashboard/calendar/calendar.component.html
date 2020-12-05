@@ -28,5 +28,6 @@
   </div>
   <ng-template [ngIf]="isBackdropOpen">
     <app-backdrop (onClose)="oncloseBackdrop()"></app-backdrop>
+    <app-event-form [isEdit]="false" (onClose)="oncloseBackdrop()"></app-event-form>
   </ng-template>
 </div>
