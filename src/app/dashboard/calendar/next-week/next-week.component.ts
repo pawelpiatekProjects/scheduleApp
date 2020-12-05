@@ -12,6 +12,7 @@ export class NextWeekComponent implements OnInit {
   days: Day[] =[];
   firstDay: string;
   lastDay: string;
+  activeDay: Day = null;
 
 
   constructor(private datesService: DatesService) { }
@@ -23,6 +24,10 @@ export class NextWeekComponent implements OnInit {
     this.days = this.datesService.setWeek(thisDayNextWeek);
     this.firstDay = this.days[0].date;
     this.lastDay = this.days[this.days.length-1].date;
+  }
+
+  onDayClick(day: Day) {
+    this.activeDay = day;
   }
 
 }

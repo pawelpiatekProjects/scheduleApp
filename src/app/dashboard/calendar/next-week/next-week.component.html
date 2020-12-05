@@ -2,7 +2,7 @@
   <div class="wrapper__left-content">
     <app-header-with-gold-corners text="Next week" [date]="firstDay + ' - ' + lastDay"></app-header-with-gold-corners>
     <ul class="days">
-      <li class="days__day" *ngFor="let i of days">
+      <li class="days__day" *ngFor="let i of days" (click)="onDayClick(i)">
 
         <div class="days__day-header">
           <h1>{{i.name}}</h1>
@@ -14,7 +14,12 @@
     </ul>
   </div>
   <div class="wrapper__right-content">
-    <app-dashed-border-area text="Day" icon="event"></app-dashed-border-area>
+    <ng-template [ngIf]="activeDay !== null">
+      <app-active-calendar-day [activeDay]="activeDay"></app-active-calendar-day>
+    </ng-template>
+    <ng-template [ngIf]="activeDay === null">
+      <app-dashed-border-area text="Day" icon="event"></app-dashed-border-area>
+    </ng-template>
   </div>
 
 </div>

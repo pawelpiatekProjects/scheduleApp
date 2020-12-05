@@ -8,16 +8,36 @@ import {ActivatedRoute, Route, Router} from "@angular/router";
 })
 export class CalendarComponent implements OnInit {
 
-  constructor(private router: Router) { }
 
-  activeButton = null;
+  buttonsStyles = ['buttons-group__button--active','',''];
+  constructor() { }
 
-  setActiveButtonStyle() {
-
+  setActiveButton(buttonNum: number): void {
+    this.buttonsStyles.forEach((button, index) => {
+      if(index === buttonNum) {
+        this.buttonsStyles[index] = 'buttons-group__button--active'
+      } else {
+        this.buttonsStyles[index] = '';
+      }
+    })
   }
 
-  buttonClick(button) {
-    console.log(button);
+  buttonClick(buttonName: string) {
+    switch (buttonName) {
+      case 'today': {
+       this.setActiveButton(0);
+        break;
+      }
+      case 'thisWeek': {
+      this.setActiveButton(1);
+        break;
+      }
+      case 'nextWeek': {
+        this.setActiveButton(2);
+        break;
+      }
+    }
+
   }
 
   ngOnInit() {

@@ -1,9 +1,19 @@
 <div class="wrapper">
   <div class="buttons-wrapper">
     <div class="buttons-group">
-      <button #today (click)="buttonClick(today)" class="buttons-group__button buttons-group__button--active" routerLink="/dashboard/today">Today</button>
-      <button class="buttons-group__button" routerLink="/dashboard/this-week">This week</button>
-      <button class="buttons-group__button" routerLink="/dashboard/next-week">Next week</button>
+      <button (click)="buttonClick('today')" class="buttons-group__button "
+              [ngClass]="buttonsStyles[0]"
+              routerLink="/dashboard/today">Today
+      </button>
+      <button (click)="buttonClick('thisWeek')" class="buttons-group__button" [ngClass]="buttonsStyles[1]"
+              routerLink="/dashboard/this-week">This week
+      </button>
+      <button (click)="buttonClick('nextWeek')"
+              [ngClass]="buttonsStyles[2]"
+              class="buttons-group__button"
+              routerLink="/dashboard/next-week">Next
+        week
+      </button>
     </div>
     <div class="add-event">
       <button class="add-event__button">

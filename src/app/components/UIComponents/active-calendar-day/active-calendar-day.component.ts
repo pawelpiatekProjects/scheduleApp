@@ -14,7 +14,9 @@ export class ActiveCalendarDayComponent implements OnInit {
   day: string;
 
   ngOnInit() {
+
     this.day = this.activeDay.date.split('.').map(el => parseInt(el))[0].toString();
+    // console.log(this.activeDay)
   }
 
 }
