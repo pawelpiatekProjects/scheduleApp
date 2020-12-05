@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Route, Router} from "@angular/router";
+
 
 @Component({
   selector: 'app-calendar',
@@ -10,6 +10,7 @@ export class CalendarComponent implements OnInit {
 
 
   buttonsStyles = ['buttons-group__button--active','',''];
+  isBackdropOpen = false;
   constructor() { }
 
   setActiveButton(buttonNum: number): void {
@@ -38,6 +39,14 @@ export class CalendarComponent implements OnInit {
       }
     }
 
+  }
+
+  onOpenBackDrop() {
+    this.isBackdropOpen = true;
+  }
+
+  oncloseBackdrop() {
+    this.isBackdropOpen = false;
   }
 
   ngOnInit() {

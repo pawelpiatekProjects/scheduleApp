@@ -16,7 +16,7 @@
       </button>
     </div>
     <div class="add-event">
-      <button class="add-event__button">
+      <button class="add-event__button" (click)="onOpenBackDrop()">
         <span class="material-icons">add_circle_outline</span>
       </button>
       <p>Add</p>
@@ -26,5 +26,7 @@
   <div class="content">
     <router-outlet></router-outlet>
   </div>
-
+  <ng-template [ngIf]="isBackdropOpen">
+    <app-backdrop (onClose)="oncloseBackdrop()"></app-backdrop>
+  </ng-template>
 </div>

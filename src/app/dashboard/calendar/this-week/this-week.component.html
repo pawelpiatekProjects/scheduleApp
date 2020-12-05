@@ -3,7 +3,6 @@
     <app-header-with-gold-corners text="This week" [date]="firstDay + ' - ' + lastDay"></app-header-with-gold-corners>
     <ul class="days">
       <li class="days__day" *ngFor="let i of days" (click)="onDayClick(i)">
-
         <div class="days__day-header">
           <h1>{{i.name}}</h1>
           <p>{{i.date}}</p>
