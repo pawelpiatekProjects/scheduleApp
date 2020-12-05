@@ -11,6 +11,8 @@ export class ThisWeekComponent implements OnInit {
   days: Day[] = [];
   firstDay: string;
   lastDay: string;
+  activeDay: Day = null;
+
 
   constructor(private datesService: DatesService) { }
 
@@ -19,6 +21,10 @@ export class ThisWeekComponent implements OnInit {
     this.days = this.datesService.setWeek(new Date());
     this.firstDay = this.days[0].date.toString();
     this.lastDay = this.days[this.days.length-1].date.toString();
+  }
+
+  onDayClick(day: Day) {
+    this.activeDay = day;
   }
 
 }

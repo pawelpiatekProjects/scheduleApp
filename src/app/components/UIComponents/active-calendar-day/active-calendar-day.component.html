@@ -1,0 +1,56 @@
+
+  <div class="day">
+    <div class="header">
+      <h1 class="header__name">{{day}}</h1>
+      <div class="header__date">
+        <h3>{{activeDay.name}}</h3>
+        <p>{{activeDay.date}}</p>
+      </div>
+
+    </div>
+    <div class="content">
+      <h2 class="content__header">Today's Assignments</h2>
+
+      <ul class="assignments">
+<!--        Dynamic content-->
+        <li class="assignment">
+          <p class="assignment__hour">8:00</p>
+          <p class="assignment__name">Meeting</p>
+          <div class="assignment__controls">
+            <button class="assignment__control assignment__control--delete">
+              <span class="material-icons">delete</span>
+            </button>
+            <button class="assignment__control assignment__control--edit">
+              <span class="material-icons">border_color</span>
+            </button>
+          </div>
+        </li>
+        <li class="assignment">
+          <p class="assignment__hour">10:00</p>
+          <p class="assignment__name">Job</p>
+          <div class="assignment__controls">
+            <button class="assignment__control assignment__control--delete">
+              <span class="material-icons">delete</span>
+            </button>
+            <button class="assignment__control assignment__control--edit">
+              <span class="material-icons">border_color</span>
+            </button>
+          </div>
+        </li>
+        <li class="assignment">
+          <p class="assignment__hour">13:00</p>
+          <p class="assignment__name">Lunch</p>
+          <div class="assignment__controls">
+            <button class="assignment__control assignment__control--delete">
+              <span class="material-icons">delete</span>
+            </button>
+            <button class="assignment__control assignment__control--edit">
+              <span class="material-icons">border_color</span>
+            </button>
+          </div>
+        </li>
+<!--        End of dynamic content-->
+      </ul>
+    </div>
+  </div>
+

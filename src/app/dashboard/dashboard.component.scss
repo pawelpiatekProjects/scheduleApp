@@ -3,14 +3,17 @@
 
   &__side-nav-wrapper {
     width: 12.5%;
+    z-index: 10;
   }
 
   &__calendar-wrapper {
     width: 70%;
+    z-index: 1;
   }
 
 
   &__user-data-wrapper {
     width: 17.5%;
+    z-index: 1;
   }
 }

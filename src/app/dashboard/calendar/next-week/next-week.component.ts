@@ -13,6 +13,7 @@ export class NextWeekComponent implements OnInit {
   firstDay: string;
   lastDay: string;
 
+
   constructor(private datesService: DatesService) { }
 
   ngOnInit() {

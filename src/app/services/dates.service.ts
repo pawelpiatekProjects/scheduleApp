@@ -1,8 +1,10 @@
+import {EventEmitter} from "@angular/core";
 
 export interface Day {
   name: string;
   date: string;
 }
+
 export class DatesService {
 
   daysName = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
@@ -28,4 +30,17 @@ export class DatesService {
 
     return daysArray;
   }
+
+  onGetDayName(date: string): string {
+    console.log(date);
+    const dateArr = date.split('.').map(el => parseInt(el));
+    const dayNum = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]).getDay();
+    console.log(dayNum);
+    return this.daysName[dayNum - 1];
+  }
+
+
+
+
+
 }

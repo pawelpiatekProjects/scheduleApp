@@ -1,0 +1,105 @@
+@import "src/assets/variables";
+.day {
+  width: 80%;
+  height: 80%;
+  background: $color-white;
+  box-shadow: 0px 0px 5px -2px rgba(0,0,0,0.75);
+  padding: 3rem;
+
+
+
+
+
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+
+  &__name {
+    font-size: 6rem;
+    color: $color-light-secondary;
+    width: 30%;
+    margin: 0;
+  }
+
+  &__date {
+    width: 70%;
+    h3 {
+      font-size: $textMedium;
+      margin-bottom: .5rem;
+      margin-top: 0;
+      color: $primary-blue;
+    }
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.content {
+  margin-top: 3rem;
+  &__header {
+    font-size: $textLarge;
+    font-weight: 400;
+  }
+}
+
+.assignments {
+  list-style: none;
+}
+
+.assignment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $color-light-primary;
+
+  &__hour {
+    margin: .5rem;
+    font-size: $text-small;
+    color: $color-light-secondary;
+    width: 20%;
+  }
+
+  &__name {
+    margin: .5rem;
+    font-size: $text-small;
+    background: $primary-blue;
+    width: 50%;
+    padding: .7rem;
+    color: $color-white;
+  }
+
+  &__controls {
+    width: 30%;
+  }
+
+  &__control {
+    background: transparent;
+    border: none;
+    color: $text-color-primary;
+    font-size: $textExtraSmall;
+    margin: 0 .5rem;
+  }
+
+  &__control--delete {
+    transition: all .3s;
+      &:hover {
+        color: $color-red-primary;
+      }
+  }
+
+  &__control--edit {
+    transition: all .3s;
+    &:hover {
+      color: $primary-blue;
+    }
+
+  }
+}
+
+

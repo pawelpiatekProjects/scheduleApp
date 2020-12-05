@@ -5,6 +5,7 @@
   width: 100%;
   height: 100vh;
   background: $color-light-tertiary;
+
 }
 
 .buttons-wrapper {
@@ -80,6 +81,10 @@
   &:hover p{
     opacity: 1;
     transform: scaleX(1);
+  }
+
+  &:focus button{
+    outline: none;
   }
 
 }

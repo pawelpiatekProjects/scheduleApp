@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div class="buttons-wrapper">
     <div class="buttons-group">
-      <button class="buttons-group__button buttons-group__button--active" routerLink="/dashboard/today">Today</button>
+      <button #today (click)="buttonClick(today)" class="buttons-group__button buttons-group__button--active" routerLink="/dashboard/today">Today</button>
       <button class="buttons-group__button" routerLink="/dashboard/this-week">This week</button>
       <button class="buttons-group__button" routerLink="/dashboard/next-week">Next week</button>
     </div>

@@ -16,7 +16,8 @@ const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent, children: [
       {path: 'today', component: TodayComponent},
       {path: 'this-week', component: ThisWeekComponent},
-      {path: 'next-week', component: NextWeekComponent}
+      {path: 'next-week', component: NextWeekComponent},
+      {path: '', redirectTo: '/dashboard/today', pathMatch: 'full'}
     ]}
 ];
 
