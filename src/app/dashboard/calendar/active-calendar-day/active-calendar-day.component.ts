@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {DatesService, Day} from "../../../services/dates.service";
+import {UiService} from "../../../services/ui.service";
 
 @Component({
   selector: 'app-active-calendar-day',
@@ -8,7 +9,7 @@ import {DatesService, Day} from "../../../services/dates.service";
 })
 export class ActiveCalendarDayComponent implements OnInit {
 
-  constructor(private datesService: DatesService) { }
+  constructor(private datesService: DatesService, private uiService: UiService) { }
 
   @Input()activeDay: Day;
   day: string;
@@ -18,7 +19,7 @@ export class ActiveCalendarDayComponent implements OnInit {
   }
 
   onOpenEditForm():void {
-
+    this.uiService.onOpenEditEvent();
   }
 
 }
