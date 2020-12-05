@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NgForm} from "@angular/forms";
+import {UiService} from "../../../services/ui.service";
 
 @Component({
   selector: 'app-event-form',
@@ -9,17 +10,16 @@ import {NgForm} from "@angular/forms";
 export class EventFormComponent implements OnInit {
 
   @Input() isEdit: boolean;
-  @Output() onClose: EventEmitter<boolean> = new EventEmitter<boolean>();
   formTitle: string;
 
-  constructor() { }
+  constructor(private uiService: UiService) { }
 
   ngOnInit() {
     this.formTitle = this.isEdit === true ? 'Edit' : 'Add';
   }
 
   onAdd(form: NgForm) {
-    this.onClose.emit(false);
+    this.uiService.onCloseBackdrop();
   }
 
 }

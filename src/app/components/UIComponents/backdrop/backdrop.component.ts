@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {UiService} from "../../../services/ui.service";
 
 @Component({
   selector: 'app-backdrop',
@@ -7,15 +8,14 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class BackdropComponent implements OnInit {
 
-  @Output() onClose: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor(private uiService: UiService) { }
 
   ngOnInit() {
   }
 
   onBackdropClick() {
-    this.onClose.emit(false);
+    this.uiService.onCloseBackdrop();
   }
 
 

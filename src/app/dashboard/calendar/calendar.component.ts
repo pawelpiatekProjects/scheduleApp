@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UiService} from "../../services/ui.service";
 
 
 @Component({
@@ -10,8 +11,14 @@ export class CalendarComponent implements OnInit {
 
 
   buttonsStyles = ['buttons-group__button--active','',''];
-  isBackdropOpen = false;
-  constructor() { }
+  isBackdropOpen: boolean;
+  constructor(private uiService: UiService) { }
+
+  ngOnInit() {
+    this.uiService.isBackdropOpen.subscribe(isOpen => {
+      this.isBackdropOpen = isOpen;
+    })
+  }
 
   setActiveButton(buttonNum: number): void {
     this.buttonsStyles.forEach((button, index) => {
@@ -42,15 +49,8 @@ export class CalendarComponent implements OnInit {
   }
 
   onOpenBackDrop() {
-    this.isBackdropOpen = true;
+    this.uiService.onOpenBackdrop();
   }
 
-  oncloseBackdrop() {
-    this.isBackdropOpen = false;
-  }
-
-  ngOnInit() {
-
-  }
 
 }
