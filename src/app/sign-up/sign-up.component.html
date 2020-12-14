@@ -16,37 +16,38 @@
       </p>
 
       <form #f="ngForm" (ngSubmit)="onSignUp(f)" class="sign-up-form">
+        <p class="sign-up-form__server-error" *ngIf="isError">{{errorMessage}}</p>
         <div class="sign-up-form__row">
           <div class="sign-up-form__item">
             <label for="name">Name</label>
-            <input type="text" id="name" name="name" required ngModel>
+            <input type="text" id="name" name="name" required ngModel [classList]="inputClass">
             <!--          <p>Please enter valid email</p>-->
           </div>
           <div class="sign-up-form__item">
             <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" name="lastName" ngModel required>
+            <input type="text" id="lastName" name="lastName" ngModel required [classList]="inputClass">
           </div>
         </div>
         <div class="sign-up-form__row">
           <div class="sign-up-form__item">
             <label for="email">E-mail</label>
-            <input type="text" id="email" name="email"  required ngModel>
+            <input type="text" id="email" name="email"  required ngModel [classList]="inputClass">
             <!--          <p>Please enter valid email</p>-->
           </div>
           <div class="sign-up-form__item">
             <label for="phone">Phone Number</label>
-            <input type="text" id="phone" name="phone" ngModel required>
+            <input type="text" id="phone" name="phone" ngModel required [classList]="inputClass">
           </div>
         </div>
         <div class="sign-up-form__row margin-bottom">
           <div class="sign-up-form__item">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" required ngModel>
+            <input type="password" id="password" name="password" required ngModel [classList]="inputClass">
             <!--          <p>Please enter valid email</p>-->
           </div>
           <div class="sign-up-form__item">
             <label for="confirmPassword">Confirm Password</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" ngModel required>
+            <input type="password" id="confirmPassword" name="confirmPassword" ngModel required [classList]="inputClass">
           </div>
         </div>
 <!--        todo: think about adding normal button but create global button scss class-->
@@ -62,4 +63,8 @@
       </form>
     </div>
   </div>
+  <ng-template [ngIf]="isLoading">
+    <app-spinner></app-spinner>
+  </ng-template>
+
 </div>

@@ -60,6 +60,15 @@
 .sign-up-form {
   width: 90%;
 
+  &__server-error {
+    color: $color-red-primary;
+    text-align: center;
+    font-weight: 600;
+    width: 90%;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+  }
+
   &__row {
     width: 100%;
     display: flex;
@@ -80,8 +89,16 @@
     input {
       width: 80%;
       padding: 1rem;
-      border: 2px solid $color-light-primary;
+
       border-radius: 1rem;
+    }
+
+    &--blue {
+      border: 2px solid $color-light-primary;
+    }
+
+    &--red {
+      border: 2px solid $color-red-primary;
     }
 
   }

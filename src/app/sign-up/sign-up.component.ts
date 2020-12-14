@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {AuthService} from "../services/auth.service";
+import {catchError} from "rxjs/operators";
 
 
 @Component({
@@ -9,6 +10,11 @@ import {AuthService} from "../services/auth.service";
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
+
+  isLoading: boolean = false;
+  isError: boolean= false;
+  errorMessage: string = null;
+  inputClass: string = 'sign-up-form__item--blue';
 
   constructor(private authService: AuthService) { }
 
@@ -20,7 +26,17 @@ export class SignUpComponent implements OnInit {
   onSignUp(form: NgForm) {
     console.log(form.value)
     const {value: {email, name, lastName, phone, password, confirmPassword}} = form;
-    this.authService.signUp(name, lastName, email, phone, password).subscribe(res => {
+    this.isLoading = true;
+    this.authService.signUp(name, lastName, email, phone, password)
+      .pipe(catchError(err => {
+        this.isLoading = false;
+        this.isError = true;
+        this.errorMessage = err.error.message;
+        this.inputClass = 'sign-up-form__item--red';
+        return err;
+      }))
+      .subscribe(res => {
+        this.isLoading = false;
       console.log(res);
     })
   }
