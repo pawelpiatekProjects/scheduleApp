@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angula
 import {NgForm} from "@angular/forms";
 import {UiService} from "../../../services/ui.service";
 import {Subscription} from "rxjs";
+import {EventsService} from "../../../services/events.service";
 
 @Component({
   selector: 'app-event-form',
@@ -14,29 +15,44 @@ export class EventFormComponent implements OnInit, OnDestroy {
   formModeSubscription: Subscription;
   headerClass: string;
   buttonClass: string;
+  mode: string;
 
 
-  constructor(private uiService: UiService) { }
+  constructor(private uiService: UiService, private eventsService: EventsService) { }
 
   ngOnInit() {
     this.formModeSubscription = this.uiService.formMode.subscribe(mode => {
-      if(mode === 'add') {
+      this.mode = mode;
+      if(this.mode === 'add') {
+
         this.formTitle = 'Add';
         this.headerClass = 'text-blue';
         this.buttonClass = 'form__button--blue';
-      } else if(mode === 'edit') {
+
+      } else if(this.mode === 'edit') {
         this.formTitle = 'Edit';
         this.headerClass = 'text-blue';
         this.buttonClass = 'form__button--blue';
+
       } else {
         this.formTitle = 'Delete'
         this.headerClass = 'text-red';
         this.buttonClass = 'form__button--red';
+
       }
+
     })
+    console.log(this.mode);
   }
 
   onAdd(form: NgForm) {
+    if(this.mode === 'add') {
+      const {value: {name, date, time}} = form;
+      this.eventsService.createEvent(name, date, time).subscribe(res => {
+        console.log(res);
+      })
+
+    }
     this.uiService.onCloseBackdrop();
   }
 

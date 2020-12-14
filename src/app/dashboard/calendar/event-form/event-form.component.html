@@ -3,12 +3,14 @@
   <form #f="ngForm" (ngSubmit)="onAdd(f)" class="form">
     <ng-template [ngIf]="formTitle === 'Add' || formTitle ==='Edit'">
       <div class="form__item">
-        <input type="text"  name="email" placeholder="Event name" required ngModel email>
+        <input type="text"  name="name" placeholder="Event name" required ngModel email>
         <!--          <p>Please enter valid email</p>-->
       </div>
       <div class="form__item">
-        <input type="date" name="password" ngModel required
-               placeholder="Enter your Password, at least 8 characters">
+        <input type="date" name="date" ngModel required>
+      </div>
+      <div class="form__item">
+        <input type="time" name="time" ngModel required>
       </div>
     </ng-template>
     <ng-template [ngIf]="formTitle === 'Delete'">

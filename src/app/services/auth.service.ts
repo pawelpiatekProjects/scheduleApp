@@ -5,7 +5,7 @@ import {RestService} from "./rest.service";
 import {tap} from "rxjs/operators";
 
 export interface UserResponse {
-  id: string;
+  userId: string;
   token: string
 }
 
@@ -29,7 +29,8 @@ export class AuthService {
       }
     }).pipe(tap(user => {
       this.user.next(user);
-      localStorage.setItem('userId', this.user.value.id);
+      console.log(this.user.value);
+      localStorage.setItem('userId', this.user.value.userId);
       localStorage.setItem('token', this.user.value.token);
     }));
   }
