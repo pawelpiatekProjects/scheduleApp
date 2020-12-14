@@ -29,7 +29,22 @@ export class AuthService {
       }
     }).pipe(tap(user => {
       this.user.next(user);
+      localStorage.setItem('userId', this.user.value.id);
+      localStorage.setItem('token', this.user.value.token);
     }));
+  }
+
+  signUp(name: string, lastName: string, email: string, phone: string, password: string) {
+    return this.restService.post<any>({
+      url: 'auth/signup',
+      data: {
+        email: email,
+        password: password,
+        name: name,
+        lastName: lastName,
+        phone: phone
+      }
+    })
   }
 
   getSignedInUSer():Observable<UserResponse> {

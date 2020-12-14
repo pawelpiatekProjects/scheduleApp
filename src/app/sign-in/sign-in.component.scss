@@ -58,6 +58,16 @@
   .sign-in-form {
     width: 90%;
 
+    &__server-error {
+      color: $color-red-primary;
+      text-align: center;
+      font-weight: 600;
+
+      margin-top: 3rem;
+      margin-bottom: 0;
+
+    }
+
     &__item {
      display: flex;
       flex-direction: column;
@@ -69,7 +79,6 @@
 
       input {
         padding: 1rem;
-        border: 2px solid $primary-blue;
         border-radius: 1rem;
 
         &:focus {
@@ -80,7 +89,13 @@
           color: $color-light-secondary;
         }
       }
+      &--red {
+        border: 2px solid $color-red-primary;
+      }
 
+      &--blue {
+        border: 2px solid $primary-blue;
+      }
     }
 
     &__forgot-password {

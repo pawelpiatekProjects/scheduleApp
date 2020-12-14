@@ -15,14 +15,17 @@
         Thank you for joining our awesome schedule app. <br> We hope that you will be satisfied
       </p>
       <form #f="ngForm" (ngSubmit)="onSignIn(f)" class="sign-in-form">
+        <p class="sign-in-form__server-error" *ngIf="isError">{{errorMessage}}</p>
         <div class="sign-in-form__item">
           <label for="email">E-mail</label>
-          <input type="text" id="email" name="email" placeholder="Enter your E-mail" required ngModel email>
+          <input type="text" id="email" name="email" placeholder="Enter your E-mail" required ngModel email
+                 [classList]="inputClass">
           <!--          <p>Please enter valid email</p>-->
         </div>
         <div class="sign-in-form__item">
           <label for="password">Password</label>
           <input type="password" id="password" name="password" ngModel required
+                 [classList]="inputClass"
                  placeholder="Enter your Password, at least 8 characters">
         </div>
         <button class="sign-in-form__forgot-password">Forgot password?</button>

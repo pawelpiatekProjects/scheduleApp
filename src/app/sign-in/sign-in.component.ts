@@ -16,6 +16,9 @@ export class SignInComponent implements OnInit {
 
   constructor(private router: Router,  private http: HttpClient, private authService: AuthService) { }
   isLoading: boolean = false;
+  isError: boolean= false;
+  errorMessage: string = null;
+  inputClass: string = 'sign-in-form__item--blue';
 
   ngOnInit() {
   }
@@ -28,6 +31,9 @@ export class SignInComponent implements OnInit {
     this.authService.login(email, password).pipe(catchError(err => {
       console.log('Error: ', err);
       this.isLoading = false;
+      this.isError = true;
+      this.errorMessage = err.error.message;
+      this.inputClass = 'sign-in-form__item--red';
       return err;
     })).subscribe(res => {
       console.log(res);
