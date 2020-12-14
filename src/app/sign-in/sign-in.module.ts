@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {SignInComponent} from "./sign-in.component";
 import {FormsModule} from "@angular/forms";
 import {AppRoutingModule} from "../app-routing.module";
+import {HttpClientModule} from "@angular/common/http";
 
 
 
@@ -11,7 +12,8 @@ import {AppRoutingModule} from "../app-routing.module";
   imports: [
     CommonModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ]
 })
 export class SignInModule { }
