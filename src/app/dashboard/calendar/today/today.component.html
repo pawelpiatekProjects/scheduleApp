@@ -4,7 +4,7 @@
     <ul class="hours">
       <li class="hours__hour" *ngFor="let i of  hours">
         <p class="hours__hour-header">{{i.hour}}</p>
-        <div class="hours__event"></div>
+        <div class="hours__event">{{i.event.name}}</div>
       </li>
     </ul>
   </div>

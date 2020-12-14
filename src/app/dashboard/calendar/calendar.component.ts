@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {UiService} from "../../services/ui.service";
 import {Subscription} from "rxjs";
+import {EventsService} from "../../services/events.service";
 
 
 @Component({
@@ -14,12 +15,13 @@ export class CalendarComponent implements OnInit, OnDestroy {
   buttonsStyles = ['buttons-group__button--active','',''];
   isBackdropOpen: boolean;
   isBackdropOpenSubscription: Subscription;
-  constructor(private uiService: UiService) { }
+  constructor(private uiService: UiService, private eventsService: EventsService) { }
 
   ngOnInit() {
     this.isBackdropOpenSubscription = this.uiService.isBackdropOpen.subscribe(isOpen => {
       this.isBackdropOpen = isOpen;
     })
+
   }
 
   setActiveButton(buttonNum: number): void {
