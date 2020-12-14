@@ -15,6 +15,7 @@ import {catchError} from "rxjs/operators";
 export class SignInComponent implements OnInit {
 
   constructor(private router: Router,  private http: HttpClient, private authService: AuthService) { }
+  isLoading: boolean = false;
 
   ngOnInit() {
   }
@@ -23,20 +24,17 @@ export class SignInComponent implements OnInit {
     console.log(form.value);
     const email = form.value.email;
     const password = form.value.password;
+    this.isLoading = true;
     this.authService.login(email, password).pipe(catchError(err => {
       console.log('Error: ', err);
+      this.isLoading = false;
       return err;
     })).subscribe(res => {
       console.log(res);
+      this.isLoading = false;
       this.router.navigateByUrl('/dashboard');
     })
 
-   // this.http.post(`http://${environment.serverApiUrl}auth/login`, {
-   //   email: email,
-   //   password: password
-   // }).subscribe(res => {
-   //   console.log(res);
-   // })
   }
 
 }
