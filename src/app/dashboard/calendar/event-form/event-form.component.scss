@@ -61,6 +61,11 @@
       border-bottom: 2px solid $text-color-primary;
       margin: 1.5rem 0;
     }
+
+    textarea {
+      border: 2px solid $text-color-primary;
+      margin: 1.5rem 0;
+    }
   }
 
   &__button--blue {

@@ -6,11 +6,15 @@
         <input type="text"  name="name" placeholder="Event name" required ngModel email>
         <!--          <p>Please enter valid email</p>-->
       </div>
+
       <div class="form__item">
         <input type="date" name="date" ngModel required>
       </div>
       <div class="form__item">
         <input type="time" name="time" ngModel required>
+      </div>
+      <div class="form__item">
+        <textarea type="text" name="description" ngModel required placeholder="Event description" rows="6"></textarea>
       </div>
     </ng-template>
     <ng-template [ngIf]="formTitle === 'Delete'">

@@ -8,6 +8,7 @@ export interface Event {
    name: string,
    date: string,
    hour: string,
+   description?: string,
    createdAt: string,
    updatedAt: string,
    creator: string
@@ -24,7 +25,7 @@ export class EventsService {
   constructor(private restService: RestService) { }
 
 // TODO: Add interceptor
-  createEvent(name: string, date: string, hour: string) {
+  createEvent(name: string, date: string, hour: string, description: string) {
     const userId = localStorage.getItem('userId');
     const token = localStorage.getItem('token');
     return this.restService.post<any>({
@@ -33,6 +34,7 @@ export class EventsService {
         name: name,
         date: date,
         hour: hour,
+        description: description,
         userId: userId
       },
       headers: {

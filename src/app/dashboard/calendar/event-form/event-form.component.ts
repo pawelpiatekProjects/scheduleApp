@@ -47,8 +47,9 @@ export class EventFormComponent implements OnInit, OnDestroy {
 
   formAction(form: NgForm) {
     if(this.mode === 'add') {
-      const {value: {name, date, time}} = form;
-      this.eventsService.createEvent(name, date, time).subscribe(res => {
+      const {value: {name, date, time, description}} = form;
+
+      this.eventsService.createEvent(name, date, time, description).subscribe(res => {
         console.log(res);
         this.eventsService.fetchEvents().subscribe(res => {
           console.log(res);
