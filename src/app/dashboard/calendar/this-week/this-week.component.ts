@@ -10,6 +10,7 @@ import {Subscription} from "rxjs";
 })
 export class ThisWeekComponent implements OnInit, OnDestroy{
 
+  //todo: change from any
   days: Day[] = [];
   firstDay: string;
   lastDay: string;
@@ -22,6 +23,7 @@ export class ThisWeekComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
     this.days = this.datesService.setWeek(new Date());
+
     this.firstDay = this.days[0].date.toString();
     this.lastDay = this.days[this.days.length-1].date.toString();
     this.eventsSubscription = this.eventsService.getEvents().subscribe(events => {
@@ -59,8 +61,21 @@ export class ThisWeekComponent implements OnInit, OnDestroy{
           })
 
           this.thisWeekEvents = aggregatedEvents;
+          this.days = this.days.map(day => {
+            const events = this.thisWeekEvents.find(el => el.date === day.date);
+            if(events) {
+              return {
+                ...day,
+                events: events.event
+              }
+            } else {
+              return day
+            }
+          });
 
-          console.log(this.thisWeekEvents)
+          console.log(this.days)
+
+
         }
 
     })

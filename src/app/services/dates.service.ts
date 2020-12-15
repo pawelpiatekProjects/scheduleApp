@@ -3,6 +3,7 @@ import {EventEmitter} from "@angular/core";
 export interface Day {
   name: string;
   date: string;
+  events: any[];
 }
 
 export function onGetDate(date: string, separator: string): Date {
@@ -35,7 +36,7 @@ export class DatesService {
       let currentDay = new Date(monday);
       const nextDay = new Date(currentDay);
       nextDay.setDate(nextDay.getDate() + i);
-      daysArray.push({name: this.daysName[i], date:nextDay.toLocaleDateString()})
+      daysArray.push({name: this.daysName[i], date:nextDay.toLocaleDateString(), events: []})
       currentDay = new Date(nextDay);
     }
 

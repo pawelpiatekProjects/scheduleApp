@@ -47,6 +47,7 @@
 
   &__event {
     border-bottom: 1px solid $color-light-secondary;
+
     width: 85%;
     margin: .5rem;
     transition: all .3s;
@@ -54,6 +55,7 @@
 
     &:hover p {
       color: $color-gold-primary;
+
     }
 
     p {
@@ -62,6 +64,7 @@
       font-size: $text-small;
       padding-left: .5rem;
       transition: all .3s;
+      border-radius: 3px;
     }
   }
 
