@@ -33,6 +33,12 @@
         transition: all .3s;
       }
 
+    button {
+      border: none;
+      background: transparent;
+      font-size: $text-small;
+    }
+
     &:hover a{
       color: $primary-blue
     }

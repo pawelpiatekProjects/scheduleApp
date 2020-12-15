@@ -3,6 +3,7 @@ import {BehaviorSubject, Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {RestService} from "./rest.service";
 import {tap} from "rxjs/operators";
+import {Router} from "@angular/router";
 
 export interface UserResponse {
   userId: string;
@@ -17,7 +18,7 @@ export class AuthService {
   private user = new BehaviorSubject<UserResponse>(null);
 
 
-  constructor(private restService: RestService) {
+  constructor(private restService: RestService, private router: Router) {
   }
 
   login(email: string, password: string) {
@@ -46,6 +47,12 @@ export class AuthService {
         phone: phone
       }
     })
+  }
+
+  logOut() {
+    this.router.navigateByUrl('/sign-in');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('token');
   }
 
   getSignedInUSer():Observable<UserResponse> {
