@@ -9,13 +9,13 @@
 
     </div>
     <div class="content">
-      <h2 class="content__header">Today's Assignments</h2>
+      <h2 class="content__header">Events of the day</h2>
 
-      <ul class="assignments">
+      <ul class="assignments" *ngIf="activeDayEvents.length !==0">
 <!--        Dynamic content-->
-        <li class="assignment">
-          <p class="assignment__hour">8:00</p>
-          <p class="assignment__name">Meeting</p>
+        <li class="assignment" *ngFor="let event of activeDayEvents">
+          <p class="assignment__hour">{{event.hour}}</p>
+          <p class="assignment__name">{{event.name}}</p>
           <div class="assignment__controls">
             <button class="assignment__control assignment__control--delete" (click)="onOpenDeleteForm()">
               <span class="material-icons">delete</span>
@@ -25,32 +25,13 @@
             </button>
           </div>
         </li>
-        <li class="assignment">
-          <p class="assignment__hour">10:00</p>
-          <p class="assignment__name">Job</p>
-          <div class="assignment__controls">
-            <button class="assignment__control assignment__control--delete">
-              <span class="material-icons">delete</span>
-            </button>
-            <button class="assignment__control assignment__control--edit">
-              <span class="material-icons">border_color</span>
-            </button>
-          </div>
-        </li>
-        <li class="assignment">
-          <p class="assignment__hour">13:00</p>
-          <p class="assignment__name">Lunch</p>
-          <div class="assignment__controls">
-            <button class="assignment__control assignment__control--delete">
-              <span class="material-icons">delete</span>
-            </button>
-            <button class="assignment__control assignment__control--edit">
-              <span class="material-icons">border_color</span>
-            </button>
-          </div>
-        </li>
+
 <!--        End of dynamic content-->
       </ul>
+      <div class="content__no-events" *ngIf="activeDayEvents.length === 0">
+        <p *ngIf="activeDayEvents.length === 0">No events on that day</p>
+        <span class="material-icons">report</span>
+      </div>
     </div>
   </div>
 

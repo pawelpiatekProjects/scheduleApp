@@ -10,7 +10,6 @@ import {Subscription} from "rxjs";
 })
 export class ThisWeekComponent implements OnInit, OnDestroy{
 
-  //todo: change from any
   days: Day[] = [];
   firstDay: string;
   lastDay: string;
@@ -72,20 +71,12 @@ export class ThisWeekComponent implements OnInit, OnDestroy{
               return day
             }
           });
-
-          console.log(this.days)
-
-
         }
-
     })
-
-
-
-
   }
 
   onDayClick(day: Day) {
+    console.log(day);
     this.activeDay = day;
   }
 

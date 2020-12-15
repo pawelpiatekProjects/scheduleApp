@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
 import {DatesService, Day} from "../../../services/dates.service";
 import {UiService} from "../../../services/ui.service";
+import {Event} from '../../../services/events.service';
 
 @Component({
   selector: 'app-active-calendar-day',
@@ -13,9 +14,18 @@ export class ActiveCalendarDayComponent implements OnInit {
 
   @Input()activeDay: Day;
   day: string;
+  activeDayEvents: Event[];
 
   ngOnInit() {
     this.day = this.activeDay.date.split('.').map(el => parseInt(el))[0].toString();
+    this.activeDayEvents = this.activeDay.events.map(event => event.event);
+    console.log('active day events', this.activeDayEvents)
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.day = this.activeDay.date.split('.').map(el => parseInt(el))[0].toString();
+    this.activeDayEvents = this.activeDay.events.map(event => event.event);
+    console.log('changes',this.activeDayEvents);
   }
 
   onOpenEditForm(): void {
