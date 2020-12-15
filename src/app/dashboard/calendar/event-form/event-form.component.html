@@ -1,6 +1,6 @@
 <div class="form-wrapper" [ngStyle]="formTitle === 'Delete' ? {height: '40%'} : {height: '60%'}">
   <h1 class="form-wrapper__header" ><span [ngClass]="headerClass">{{formTitle}}</span> Event</h1>
-  <form #f="ngForm" (ngSubmit)="onAdd(f)" class="form">
+  <form #f="ngForm" (ngSubmit)="formAction(f)" class="form">
     <ng-template [ngIf]="formTitle === 'Add' || formTitle ==='Edit'">
       <div class="form__item">
         <input type="text"  name="name" placeholder="Event name" required ngModel email>

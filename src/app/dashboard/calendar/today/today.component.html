@@ -2,15 +2,56 @@
   <div class="wrapper__left-content">
     <app-header-with-gold-corners text="Today" [date]="today"></app-header-with-gold-corners>
     <ul class="hours">
-      <li class="hours__hour" *ngFor="let i of  hours">
+      <li class="hours__hour" *ngFor="let i of  hours" (click)="onSelectEvent(i)">
         <p class="hours__hour-header">{{i.hour}}</p>
-        <div class="hours__event">{{i.event.name}}</div>
+        <div class="hours__event">
+          <p>{{i.event.name}}</p>
+        </div>
       </li>
     </ul>
   </div>
   <div class="wrapper__right-content">
+    <ng-template [ngIf]="selectedEvent===null">
+      <app-dashed-border-area text="Event" icon="touch_app"></app-dashed-border-area>
+    </ng-template>
 
-    <app-dashed-border-area text="Event" icon="touch_app"></app-dashed-border-area>
+    <div class="selected-event" *ngIf="selectedEvent !== null">
+      <div class="selected-event__header">
+        <h3>{{selectedEvent.event.name}}t</h3>
+        <div class="selected-event__buttons">
+          <button class="selected-event__button selected-event__button--red">
+            <span class="material-icons">delete</span>
+          </button>
+          <button class="selected-event__button selected-event__button--blue">
+            <span class="material-icons">more_horiz</span>
+          </button>
+        </div>
+      </div>
+      <ul class="hours hours-selected">
+        <li class="hours__hour">
+          <p class="hours__hour-header">00:00</p>
+          <div class="hours__event">
+            <p></p>
+          </div>
+        </li>
+        <li class="hours__hour">
+          <p class="hours__hour-header">01:00</p>
+          <div class="hours__event">
+            <p></p>
+          </div>
+        </li>
+        <li class="hours__hour">
+          <p class="hours__hour-header">02:00</p>
+          <div class="hours__event">
+            <p></p>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+  <ng-template [ngIf]="isLoading">
+    <app-spinner></app-spinner>
+  </ng-template>
+
 
 </div>

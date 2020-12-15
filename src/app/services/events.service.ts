@@ -4,7 +4,7 @@ import {RestService} from "./rest.service";
 import {map, take, tap} from 'rxjs/operators';
 
 export interface Event {
-   id: string,
+   _id: string,
    name: string,
    date: string,
    hour: string,

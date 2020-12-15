@@ -14,7 +14,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
 
   buttonsStyles = ['buttons-group__button--active','',''];
   isBackdropOpen: boolean;
-  isBackdropOpenSubscription: Subscription;
+  isBackdropOpenSubscription: Subscription = null;
   constructor(private uiService: UiService, private eventsService: EventsService) { }
 
   ngOnInit() {
@@ -57,7 +57,9 @@ export class CalendarComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.isBackdropOpenSubscription.unsubscribe();
+    if(this.isBackdropOpenSubscription !== null) {
+      this.isBackdropOpenSubscription.unsubscribe();
+    }
   }
 
 
