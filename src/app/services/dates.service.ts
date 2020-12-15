@@ -5,6 +5,17 @@ export interface Day {
   date: string;
 }
 
+export function onGetDate(date: string, separator: string): Date {
+  let dateArr;
+  if(separator === '.') {
+    dateArr = date.split(separator).map(el => parseInt(el));
+  } else if (separator === '-') {
+    dateArr = date.split(separator).map(el => parseInt(el)).reverse();
+  }
+
+  return  new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
+}
+
 export class DatesService {
 
   daysName = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
@@ -31,13 +42,7 @@ export class DatesService {
     return daysArray;
   }
 
-  onGetDayName(date: string): string {
-    console.log(date);
-    const dateArr = date.split('.').map(el => parseInt(el));
-    const dayNum = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]).getDay();
-    console.log(dayNum);
-    return this.daysName[dayNum - 1];
-  }
+
 
 
 
