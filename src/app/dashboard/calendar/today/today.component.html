@@ -29,19 +29,25 @@
       </div>
       <ul class="hours hours-selected">
         <li class="hours__hour">
-          <p class="hours__hour-header">00:00</p>
+          <p class="hours__hour-header">
+            {{selectedEventHoursArr[0]}}:00
+          </p>
           <div class="hours__event">
             <p></p>
           </div>
         </li>
         <li class="hours__hour">
-          <p class="hours__hour-header">01:00</p>
+          <p class="hours__hour-header">
+            {{selectedEventHoursArr[1]}}:00
+          </p>
           <div class="hours__event">
-            <p></p>
+            <p>{{selectedEvent.event.hour}}</p>
           </div>
         </li>
         <li class="hours__hour">
-          <p class="hours__hour-header">02:00</p>
+          <p class="hours__hour-header">
+            {{selectedEventHoursArr[2]}}:00
+          </p>
           <div class="hours__event">
             <p></p>
           </div>

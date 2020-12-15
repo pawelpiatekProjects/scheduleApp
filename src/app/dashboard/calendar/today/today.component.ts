@@ -19,6 +19,7 @@ export class TodayComponent implements OnInit, OnDestroy {
   today = new Date().toLocaleDateString();
   eventsSubscription: Subscription = null;
   selectedEvent: Hour = null;
+  selectedEventHoursArr: string[] = null;
   isLoading: boolean = false;
 
   constructor(private eventsService: EventsService) {
@@ -62,10 +63,26 @@ export class TodayComponent implements OnInit, OnDestroy {
     })
   }
 
+  //todo add event description
+
   onSelectEvent(hour: Hour) {
     const {event: {_id}} = hour;
     if (_id.length !== 0) {
       this.selectedEvent = hour;
+      const eventHour = this.selectedEvent.hour.slice(0,2);
+      let previousEventHour;
+      let nextEvenHour;
+      if(eventHour[0] === '0' && parseInt(eventHour[1]) !== 9){
+        previousEventHour = '0'+(parseInt(eventHour[1]) - 1).toString();
+        nextEvenHour = '0'+(parseInt(eventHour[1]) + 1).toString();
+        console.log(previousEventHour);
+      } else {
+        previousEventHour = parseInt(eventHour) - 1;
+        nextEvenHour = parseInt(eventHour) + 1;
+        console.log(previousEventHour);
+      }
+      console.log('hour: ', eventHour);
+      this.selectedEventHoursArr = [previousEventHour, eventHour, nextEvenHour];
     }
   }
 
@@ -73,6 +90,7 @@ export class TodayComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.eventsSubscription !== null) {
       this.eventsSubscription.unsubscribe();
+
     }
   }
 }
