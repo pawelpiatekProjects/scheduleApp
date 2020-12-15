@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {AuthService} from "../services/auth.service";
 import {catchError} from "rxjs/operators";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -13,10 +14,11 @@ export class SignUpComponent implements OnInit {
 
   isLoading: boolean = false;
   isError: boolean= false;
+  isAccountCreated: boolean = false;
   errorMessage: string = null;
   inputClass: string = 'sign-up-form__item--blue';
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -37,8 +39,13 @@ export class SignUpComponent implements OnInit {
       }))
       .subscribe(res => {
         this.isLoading = false;
+        this.isAccountCreated = true;
       console.log(res);
     })
+  }
+
+  onNavigateToSignIn() {
+    this.router.navigateByUrl('/sign-in');
   }
 
 }

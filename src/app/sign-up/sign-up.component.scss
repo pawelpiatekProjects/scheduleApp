@@ -127,3 +127,51 @@
 .margin-bottom {
   margin-bottom: 1.5rem;
 }
+
+.backdrop {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: $color-black-rgba;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__info {
+    padding: 3rem;
+    background: $color-white;
+    width: 40%;
+    height: 30%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    h1 {
+      color: $color-light-secondary;
+      text-align: center;
+    }
+
+    button {
+      border: none;
+      color: $primary-blue;
+      background: transparent;
+      font-size: $textExtraLarge;
+      border-bottom: 2px solid transparent;
+      padding-bottom: .5rem;
+      transition: all .3s;
+
+      &:hover {
+        border-bottom-color: $primary-blue;
+      }
+    }
+
+    span {
+      font-size: 8rem;
+      color: $color-light-secondary;
+    }
+  }
+}

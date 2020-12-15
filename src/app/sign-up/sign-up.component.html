@@ -66,5 +66,14 @@
   <ng-template [ngIf]="isLoading">
     <app-spinner></app-spinner>
   </ng-template>
+<!--  todo: change to backdrop component-->
+
+    <div class="backdrop" *ngIf="isAccountCreated">
+      <div class="backdrop__info">
+        <h1>Account has been created successfully</h1>
+        <span class="material-icons">check_circle</span>
+        <button (click)="onNavigateToSignIn()">Sign In</button>
+      </div>
+    </div>
 
 </div>
