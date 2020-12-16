@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, from} from "rxjs";
 import {RestService} from "./rest.service";
-import {map, take, tap} from 'rxjs/operators';
+import {filter, map, take, tap} from 'rxjs/operators';
 
 export interface Event {
    _id: string,
@@ -24,10 +24,9 @@ export class EventsService {
 
   constructor(private restService: RestService) { }
 
-// TODO: Add interceptor
+
   createEvent(name: string, date: string, hour: string, description: string) {
     const userId = localStorage.getItem('userId');
-    const token = localStorage.getItem('token');
     return this.restService.post<any>({
       url: 'events/new',
       data: {
@@ -36,28 +35,34 @@ export class EventsService {
         hour: hour,
         description: description,
         userId: userId
-      },
-      // headers: {
-      //   Authorization: 'Bearer ' + token
-      // }
+      }
     });
   }
 
   fetchEvents() {
-    const token = localStorage.getItem('token');
     return this.restService.get<any>({
-      url: 'events/all',
-      // headers: {
-      //   Authorization: 'Bearer ' + token
-      // }
+      url: 'events/all'
     }).pipe(tap(({events}) => {
       this.events.next(events);
     }))
   }
 
+  deleteEvent(id: string) {
+    console.log('event id from event service: ', id);
+    const userId = localStorage.getItem('userId');
+    return this.restService.post<any>({
+      url: 'events/delete',
+      data: {
+        eventId: id,
+        userId: userId
+      }
+    })
+  }
+
   getEvents() {
     return this.events.asObservable();
   }
+
 
 
 }

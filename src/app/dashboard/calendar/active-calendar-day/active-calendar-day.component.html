@@ -17,10 +17,10 @@
           <p class="assignment__hour">{{event.hour}}</p>
           <p class="assignment__name">{{event.name}}</p>
           <div class="assignment__controls">
-            <button class="assignment__control assignment__control--delete" (click)="onOpenDeleteForm()">
+            <button class="assignment__control assignment__control--delete" (click)="onOpenDeleteForm(event._id)">
               <span class="material-icons">delete</span>
             </button>
-            <button class="assignment__control assignment__control--edit" (click)="onOpenEditForm()">
+            <button class="assignment__control assignment__control--edit" (click)="onOpenEditForm(event._id)">
               <span class="material-icons">border_color</span>
             </button>
           </div>

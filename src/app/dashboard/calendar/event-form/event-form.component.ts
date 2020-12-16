@@ -56,6 +56,17 @@ export class EventFormComponent implements OnInit, OnDestroy {
         });
       })
 
+    } else if(this.mode === 'edit') {
+
+    } else {
+        const eventId = this.uiService.activeDayId.value;
+        console.log('eventId: ', eventId)
+        this.eventsService.deleteEvent(eventId).subscribe(res => {
+          console.log(res);
+          this.eventsService.fetchEvents().subscribe(res => {
+            console.log(res);
+          })
+        })
     }
     this.uiService.onCloseBackdrop();
   }

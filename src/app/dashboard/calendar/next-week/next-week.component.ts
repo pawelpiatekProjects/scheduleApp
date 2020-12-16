@@ -27,6 +27,8 @@ export class NextWeekComponent implements OnInit, OnDestroy {
     this.days = this.datesService.setWeek(thisDayNextWeek);
     this.firstDay = this.days[0].date;
     this.lastDay = this.days[this.days.length-1].date;
+
+    // TODO: changed redundant code
     this.eventsSubscription = this.eventsService.getEvents().subscribe(events => {
       if(events !== null) {
         const filteredEvents = events.filter(event => {
