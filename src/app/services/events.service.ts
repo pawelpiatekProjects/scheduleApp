@@ -37,9 +37,9 @@ export class EventsService {
         description: description,
         userId: userId
       },
-      headers: {
-        Authorization: 'Bearer ' + token
-      }
+      // headers: {
+      //   Authorization: 'Bearer ' + token
+      // }
     });
   }
 
@@ -47,9 +47,9 @@ export class EventsService {
     const token = localStorage.getItem('token');
     return this.restService.get<any>({
       url: 'events/all',
-      headers: {
-        Authorization: 'Bearer ' + token
-      }
+      // headers: {
+      //   Authorization: 'Bearer ' + token
+      // }
     }).pipe(tap(({events}) => {
       this.events.next(events);
     }))

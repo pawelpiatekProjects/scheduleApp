@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   serverApiUrl: 'localhost:8080',
-  connectionProtocol: 'http://'
+  connectionProtocol: 'http://',
+  signInUrl: 'signin',
+  signUpUrl: 'signup'
 };
 
 /*

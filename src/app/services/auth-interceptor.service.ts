@@ -1,63 +1,46 @@
 import { Injectable } from '@angular/core';
+import {HttpInterceptor, HttpRequest, HttpHandler, HttpErrorResponse, HttpEvent, HttpResponse} from "@angular/common/http";
+import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { map, catchError } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthInterceptorService {
+@Injectable()
+export class AuthInterceptorService implements HttpInterceptor {
 
-  constructor() { }
 
-  isRefreshingToken = false;
 
-  // constructor(private authService: AuthService, private router: Router, private alertController: AlertController) { }
-  //
-  // intercept(req: HttpRequest<any>, next: HttpHandler) {
-  //   let modifiedReq = req;
-  //   const user = this.authService.user.value;
-  //
-  //   if (!req.url.includes(environment.oauthUrl) && user) {
-  //     const currentDate = new Date().getTime();
-  //     const testDate = currentDate + 1;
-  //     modifiedReq = req.clone({
-  //       headers: req.headers.set('Authorization', `Bearer ${user.token}`),
-  //     });
-  //   }
-  //
-  //   return next.handle(modifiedReq).pipe(
-  //     map((event: HttpEvent<any>) => {
-  //       if (event instanceof HttpResponse) {
-  //         return event;
-  //       }
-  //     }),
-  //     catchError(error => {
-  //       if (error instanceof HttpErrorResponse) {
-  //         // Obsługa sytuacji w której token traci ważność
-  //         if (error.status === 401) {
-  //           this.alertController.create({
-  //             header: "Błąd",
-  //             message: "Nastapiło wylogowanie",
-  //             buttons: [
-  //               {
-  //                 text: 'Okay',
-  //                 role: 'camcel'
-  //               }
-  //             ]
-  //           }).then(alertEl => {
-  //             alertEl.present();
-  //             this.authService.logout();
-  //           })
-  //
-  //         }
-  //         else if (error.status === 400) {
-  //           if(error.error.result === `Can't change state`){
-  //             return next.handle(modifiedReq);
-  //           }
-  //           // this.authService.logout();
-  //         } else if (error.status === 500) {
-  //           this.authService.logout();
-  //         }
-  //       }
-  //     }),
-  //   )
-  // }
+  constructor(private authService: AuthService) { }
+
+  intercept(req: HttpRequest<any>, next: HttpHandler) {
+    let modifiedReq = req;
+    const token = localStorage.getItem('token');
+
+    if ((!req.url.includes(environment.signInUrl) || req.url.includes(environment.signUpUrl)) && token) {
+      modifiedReq = req.clone({
+        headers: req.headers.set('Authorization', `Bearer ${token}`),
+      });
+    }
+
+    return next.handle(modifiedReq).pipe(
+      map((event: HttpEvent<any>) => {
+
+        if (event instanceof HttpResponse) {
+          return event;
+        }
+      }),
+      catchError(error => {
+        if (error instanceof HttpErrorResponse) {
+          if (error.status === 401) {
+            this.authService.logOut();
+          }
+          else if (error.status === 400) {
+              return next.handle(modifiedReq);
+          } else if (error.status === 500) {
+            this.authService.logOut();
+          }
+        }
+      }),
+    )
+  }
 }

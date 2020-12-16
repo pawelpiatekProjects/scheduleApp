@@ -17,6 +17,10 @@ export class AuthService {
 
   private user = new BehaviorSubject<UserResponse>(null);
 
+  get getUSer() {
+    return this.user;
+  }
+
 
   constructor(private restService: RestService, private router: Router) {
   }

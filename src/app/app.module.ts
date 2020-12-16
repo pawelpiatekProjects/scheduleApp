@@ -9,6 +9,8 @@ import {SignInModule} from "./sign-in/sign-in.module";
 import {SignUpModule} from "./sign-up/sign-up.module";
 import {DashboardModule} from "./dashboard/dashboard.module";
 import {DatesService} from "./services/dates.service";
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {AuthInterceptorService} from "./services/auth-interceptor.service";
 
 
 @NgModule({
@@ -24,7 +26,10 @@ import {DatesService} from "./services/dates.service";
     SignUpModule,
     DashboardModule
   ],
-  providers: [DatesService],
+  providers: [
+    DatesService,
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
