@@ -63,6 +63,10 @@ export class EventsService {
     return this.events.asObservable();
   }
 
+  getEventById(id: string) {
+    return this.events.value.filter(event => event._id === id)[0];
+  }
+
 
 
 }

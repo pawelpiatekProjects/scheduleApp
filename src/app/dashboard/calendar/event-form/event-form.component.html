@@ -3,7 +3,7 @@
   <form #f="ngForm" (ngSubmit)="formAction(f)" class="form">
     <ng-template [ngIf]="formTitle === 'Add' || formTitle ==='Edit'">
       <div class="form__item">
-        <input type="text"  name="name" placeholder="Event name" required ngModel email>
+        <input type="text"  name="name" placeholder="Event name" required ngModel  [value]="activeEvent !== null ? activeEvent.name : ''">
         <!--          <p>Please enter valid email</p>-->
       </div>
 

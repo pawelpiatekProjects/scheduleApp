@@ -16,6 +16,7 @@ export class EventFormComponent implements OnInit, OnDestroy {
   headerClass: string;
   buttonClass: string;
   mode: string;
+  activeEvent= null;
 
 
   constructor(private uiService: UiService, private eventsService: EventsService) { }
@@ -34,6 +35,7 @@ export class EventFormComponent implements OnInit, OnDestroy {
         this.headerClass = 'text-blue';
         this.buttonClass = 'form__button--blue';
 
+
       } else {
         this.formTitle = 'Delete'
         this.headerClass = 'text-red';
@@ -43,6 +45,7 @@ export class EventFormComponent implements OnInit, OnDestroy {
 
     })
     console.log(this.mode);
+
   }
 
   formAction(form: NgForm) {
@@ -57,7 +60,9 @@ export class EventFormComponent implements OnInit, OnDestroy {
       })
 
     } else if(this.mode === 'edit') {
-
+      const eventId = this.uiService.activeDayId.value;
+      this.activeEvent = this.eventsService.getEventById(eventId);
+      console.log('active event', this.activeEvent);
     } else {
         const eventId = this.uiService.activeDayId.value;
         console.log('eventId: ', eventId)
