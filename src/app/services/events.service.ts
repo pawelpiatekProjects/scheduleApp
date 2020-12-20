@@ -3,6 +3,7 @@ import {BehaviorSubject, from} from "rxjs";
 import {RestService} from "./rest.service";
 import {filter, map, take, tap} from 'rxjs/operators';
 
+
 export interface Event {
    _id: string,
    name: string,
@@ -65,6 +66,21 @@ export class EventsService {
 
   getEventById(id: string) {
     return this.events.value.filter(event => event._id === id)[0];
+  }
+
+  editEvent(id: string, name, date, hour,description) {
+    const userId = localStorage.getItem('userId');
+    return this.restService.put<any>({
+      url: 'events/edit',
+      data: {
+        id: id,
+        name: name,
+        date: date,
+        hour: hour,
+        description: description,
+        userId: userId
+      }
+    })
   }
 
 

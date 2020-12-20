@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {UiService} from "../../services/ui.service";
 import {Subscription} from "rxjs";
 import {EventsService} from "../../services/events.service";
+import {NgForm} from "@angular/forms";
 
 
 @Component({
@@ -56,11 +57,28 @@ export class CalendarComponent implements OnInit, OnDestroy {
     this.uiService.onOpenAddEvent();
   }
 
+  onCloseBackdrop() {
+    this.isBackdropOpen = false;
+  }
+
+  onCreateEvent(form: NgForm) {
+    const {value: {name, date, time, description}} = form;
+
+    this.eventsService.createEvent(name, date, time, description).subscribe(res => {
+      console.log(res);
+      this.eventsService.fetchEvents().subscribe(res => {
+        console.log(res);
+        this.onCloseBackdrop();
+      });
+    })
+  }
+
   ngOnDestroy() {
     if(this.isBackdropOpenSubscription !== null) {
       this.isBackdropOpenSubscription.unsubscribe();
     }
   }
+
 
 
 }

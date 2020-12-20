@@ -26,8 +26,31 @@
   <div class="content">
     <router-outlet></router-outlet>
   </div>
-  <ng-template [ngIf]="isBackdropOpen">
-    <app-backdrop></app-backdrop>
-    <app-event-form></app-event-form>
-  </ng-template>
+  <!--  <ng-template [ngIf]="isBackdropOpen">-->
+  <!--    <app-backdrop></app-backdrop>-->
+  <!--    <app-event-form></app-event-form>-->
+  <!--  </ng-template>-->
+  <div class="backdrop" *ngIf="isBackdropOpen" (click)="onCloseBackdrop()"></div>
+  <div class="form-wrapper" *ngIf="isBackdropOpen">
+    <form #f="ngForm" (ngSubmit)="onCreateEvent(f)" class="form">
+      <div class="form__item">
+        <input type="text" name="name" placeholder="Event name" required ngModel>
+        <!--          <p>Please enter valid email</p>-->
+      </div>
+
+      <div class="form__item">
+        <input type="date" name="date" ngModel required>
+      </div>
+      <div class="form__item">
+        <input type="time" name="time" ngModel required>
+      </div>
+      <div class="form__item">
+        <textarea type="text" name="description" ngModel required placeholder="Event description" rows="6"></textarea>
+      </div>
+      <button>Create</button>
+
+    </form>
+  </div>
+
 </div>
+

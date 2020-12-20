@@ -39,8 +39,13 @@ export class TodayComponent implements OnInit, OnDestroy {
 
         for (let i = 0; i < 24; i++) {
           const hour = i.toString().length == 1 ? `0${i}:00` : `${i}:00`;
+          console.log('hour: ', hour);
           console.log(hour.slice(0, 2));
-          const ev = this.todayEvents.find(event => event.hour.slice(0, 2) === hour.slice(0, 2));
+          const ev = this.todayEvents.find(event => {
+            if(event !== null) {
+              return event.hour.slice(0, 2) === hour.slice(0, 2);
+            }
+          });
           console.log(ev);
           if (ev) {
             this.hours.push({hour: hour, event: ev});

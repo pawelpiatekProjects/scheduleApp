@@ -17,10 +17,10 @@
           <p class="assignment__hour">{{event.hour}}</p>
           <p class="assignment__name">{{event.name}}</p>
           <div class="assignment__controls">
-            <button class="assignment__control assignment__control--delete" (click)="onOpenDeleteForm(event._id)">
+            <button class="assignment__control assignment__control--delete" (click)="onOpenDeleteModal(event)">
               <span class="material-icons">delete</span>
             </button>
-            <button class="assignment__control assignment__control--edit" (click)="onOpenEditForm(event._id)">
+            <button class="assignment__control assignment__control--edit" (click)="onOpenEditForm(event)">
               <span class="material-icons">border_color</span>
             </button>
           </div>
@@ -31,6 +31,38 @@
       <div class="content__no-events" *ngIf="activeDayEvents.length === 0">
         <p *ngIf="activeDayEvents.length === 0">No events on that day</p>
         <span class="material-icons">report</span>
+      </div>
+    </div>
+
+    <div class="backdrop" *ngIf="isEditBackdropOpen" (click)="onCloseEditBackdrop()"></div>
+    <div class="backdrop" *ngIf="isDeleteBackdropOpen" (click)="onCloseDeleteBackdrop()"></div>
+    <div class="form-wrapper" *ngIf="isEditBackdropOpen">
+      <form #f="ngForm" (ngSubmit)="onEditEvent(f)" class="form" *ngIf="activeEvent !== null">
+        <div class="form__item">
+
+          <input type="text" name="name" placeholder="Event name" required ngModel [value]="activeEvent.name">
+          <!--          <p>Please enter valid email</p>-->
+        </div>
+
+        <div class="form__item">
+          <input type="date" name="date" ngModel required [value]="activeEvent.date">
+        </div>
+        <div class="form__item">
+          <input type="time" name="hour" ngModel required [value]="activeEvent.hour">
+        </div>
+        <div class="form__item">
+          <textarea type="text" name="description" ngModel required placeholder="Event description" rows="6" [value]="activeEvent.description"></textarea>
+        </div>
+        <button>Edit</button>
+
+      </form>
+    </div>
+    <div class="delete-modal" *ngIf="isDeleteBackdropOpen">
+      <h1 class="delete-modal__header">Delete Event</h1>
+      <p class="delete-modal__text">Are you sure?</p>
+      <div class="delete-modal__buttons">
+        <button class="delete-modal__button">Cancel</button>
+        <button class="delete-modal__button delete-modal__button--red" (click)="onDeleteEvent()">Delete</button>
       </div>
     </div>
   </div>

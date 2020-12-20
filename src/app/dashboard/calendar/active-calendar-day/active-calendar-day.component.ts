@@ -3,6 +3,8 @@ import {DatesService, Day} from "../../../services/dates.service";
 import {UiService} from "../../../services/ui.service";
 import {Event, EventsService} from '../../../services/events.service';
 import {Subscription} from "rxjs";
+import {NgForm} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-active-calendar-day',
@@ -11,12 +13,15 @@ import {Subscription} from "rxjs";
 })
 export class ActiveCalendarDayComponent implements OnInit , OnDestroy{
 
-  constructor(private datesService: DatesService, private uiService: UiService, private eventsService: EventsService) { }
+  constructor(private datesService: DatesService, private uiService: UiService, private eventsService: EventsService, private router: Router) { }
 
   @Input()activeDay: Day;
   day: string;
   activeDayEvents: Event[];
   eventsSubscription: Subscription = null;
+  isEditBackdropOpen = false;
+  isDeleteBackdropOpen = false;
+  activeEvent: Event;
 
   ngOnInit() {
     this.day = this.activeDay.date.split('.').map(el => parseInt(el))[0].toString();
@@ -33,13 +38,49 @@ export class ActiveCalendarDayComponent implements OnInit , OnDestroy{
     console.log('changes',this.activeDayEvents);
   }
 
-  onOpenEditForm(id: string): void {
-    this.uiService.onOpenEditEvent(id);
+  onOpenEditForm(event: Event): void {
+    // this.uiService.onOpenEditEvent(id);
+    this.activeEvent = event;
+    this.isEditBackdropOpen = true;
+
   }
 
-  onOpenDeleteForm(id: string): void {
-    this.uiService.onOpenDeleteEvent(id);
+  onOpenDeleteModal(event: Event) {
+    this.activeEvent = event;
+    this.isDeleteBackdropOpen = true;
   }
+
+  onDeleteEvent() {
+    this.eventsService.deleteEvent(this.activeEvent._id).subscribe(res => {
+      this.eventsService.fetchEvents().subscribe();
+      this.router.navigateByUrl('/dashboard');
+      this.onCloseDeleteBackdrop();
+    })
+  }
+
+
+
+  onEditEvent(form: NgForm) {
+      const  {value: {name, date, hour, description}} = form;
+      this.eventsService.editEvent(this.activeEvent._id, name, date, hour, description).subscribe(res => {
+        console.log(res);
+        this.eventsService.fetchEvents().subscribe(res => {
+          console.log(res);
+          this.onCloseEditBackdrop();
+          this.router.navigateByUrl('/dashboard');
+        })
+      })
+  }
+
+
+  onCloseEditBackdrop() {
+    this.isEditBackdropOpen = false;
+  }
+
+  onCloseDeleteBackdrop() {
+    this.isDeleteBackdropOpen = false;
+  }
+
 
   ngOnDestroy() {
     if(this.eventsSubscription !== null) {

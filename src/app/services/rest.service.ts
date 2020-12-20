@@ -87,7 +87,10 @@ export class RestService {
 
   post<T>(resource: Resource): Observable<T>{
     return this.http.post<T>(this.url(resource), this.data(resource), this.options(resource));
+  }
 
+  put<T>(resource: Resource): Observable<T> {
+    return this.http.put<T>(this.url(resource), this.data(resource), this.options(resource));
   }
 
 }
