@@ -34,8 +34,11 @@ export class ActiveCalendarDayComponent implements OnInit , OnDestroy{
 
   ngOnChanges(changes: SimpleChanges) {
     this.day = this.activeDay.date.split('.').map(el => parseInt(el))[0].toString();
-    // this.activeDayEvents = this.activeDay.events.map(event => event.event);
-    console.log('changes',this.activeDayEvents);
+    this.activeDayEvents = this.activeDay.events.map(event => event.event);
+    console.log('active day events', this.activeDayEvents);
+    this.eventsSubscription = this.eventsService.getEvents().subscribe(events => {
+      this.activeDayEvents = events.filter(event => event.date === this.activeDay.date.split('.').reverse().join('-'))
+    })
   }
 
   onOpenEditForm(event: Event): void {

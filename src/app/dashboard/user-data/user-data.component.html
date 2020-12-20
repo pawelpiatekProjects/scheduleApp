@@ -9,12 +9,12 @@
     </div>
 
   </div>
-  <div class="card">
+  <div class="card" *ngIf="user !== null">
       <div class="card-header">
         <div class="card-header__avatar">
           <img src="assets/images/svg/avatar.svg" alt="avatar">
         </div>
-        <h3 class="card-header__user-name">Issac Whitfield</h3>
+        <h3 class="card-header__user-name">{{user.name}} {{user.lastName}}</h3>
         <button class="card-header__more">
           <span class="material-icons">more_horiz</span>
         </button>
@@ -22,11 +22,11 @@
     <ul class="card-content">
       <li class="card-content__item">
         <span class="material-icons">call</span>
-        <p>+48 123 456 789</p>
+        <p>{{user.phone}}</p>
       </li>
       <li class="card-content__item">
         <span class="material-icons">email</span>
-        <p>user@email.com</p>
+        <p>{{user.email}}</p>
       </li>
     </ul>
   </div>
