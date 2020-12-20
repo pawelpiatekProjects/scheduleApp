@@ -20,43 +20,44 @@
         <div class="sign-up-form__row">
           <div class="sign-up-form__item">
             <label for="name">Name</label>
-            <input type="text" id="name" name="name" required ngModel minlength="3" [classList]="inputClass" (ngModelChange)="onChangeName()">
-            <p class="sign-up-form__input-error" *ngIf="!nameValidator.valid">{{nameValidator.errorMessage}}</p>
-            <p class="sign-up-form__input-error" *ngIf="nameValidator.valid"></p>
+            <input type="text" id="name" name="name" required ngModel #name="ngModel" minlength="3" [classList]="inputClass" >
+            <p class="sign-up-form__input-error" *ngIf="!name.valid && name.touched">Invalid name</p>
+            <p class="sign-up-form__input-error" *ngIf="name.valid || !name.touched"></p>
+
           </div>
           <div class="sign-up-form__item">
             <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" name="lastName" ngModel required [classList]="inputClass" (ngModelChange)="onChangeLastName()">
-            <p class="sign-up-form__input-error" *ngIf="!lastNameValidator.valid">{{lastNameValidator.errorMessage}}</p>
-            <p class="sign-up-form__input-error" *ngIf="lastNameValidator.valid"></p>
+            <input type="text" id="lastName" name="lastName" ngModel #lastName="ngModel" required [classList]="inputClass" >
+            <p class="sign-up-form__input-error"  *ngIf="!lastName.valid && lastName.touched">Invalid last name</p>
+            <p class="sign-up-form__input-error" *ngIf="lastName.valid || !lastName.touched"></p>
           </div>
         </div>
         <div class="sign-up-form__row">
           <div class="sign-up-form__item">
             <label for="email">E-mail</label>
-            <input type="text" id="email" name="email"  required ngModel [classList]="inputClass" (ngModelChange)="onChangeEmail()">
-            <p class="sign-up-form__input-error" *ngIf="!emailValidator.valid">{{emailValidator.errorMessage}}</p>
-            <p class="sign-up-form__input-error" *ngIf="emailValidator.valid">{{emailValidator.errorMessage}}</p>
+            <input type="text" id="email" name="email"  required ngModel #email="ngModel" [classList]="inputClass" >
+            <p class="sign-up-form__input-error"  *ngIf="!email.valid && email.touched">Invalid email</p>
+            <p class="sign-up-form__input-error" *ngIf="email.valid || !email.touched"></p>
           </div>
           <div class="sign-up-form__item">
             <label for="phone">Phone Number</label>
-            <input type="text" id="phone" name="phone" ngModel required [classList]="inputClass" (ngModelChange)="onChangePhone()">
-            <p class="sign-up-form__input-error" *ngIf="!phoneValidator.valid">{{phoneValidator.errorMessage}}</p>
-            <p class="sign-up-form__input-error" *ngIf="phoneValidator.valid">{{phoneValidator.errorMessage}}</p>
+            <input type="text" id="phone" name="phone" ngModel #phone="ngModel" required [classList]="inputClass" >
+            <p class="sign-up-form__input-error"  *ngIf="!phone.valid && phone.touched">Invalid phone</p>
+            <p class="sign-up-form__input-error" *ngIf="phone.valid || !phone.touched"></p>
           </div>
         </div>
         <div class="sign-up-form__row margin-bottom">
           <div class="sign-up-form__item">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" required ngModel [classList]="inputClass" (ngModelChange)="onChangePassword()">
-            <p class="sign-up-form__input-error" *ngIf="!passwordValidator.valid">{{passwordValidator.errorMessage}}</p>
-            <p class="sign-up-form__input-error" *ngIf="passwordValidator.valid">{{passwordValidator.errorMessage}}</p>
+            <input type="password" id="password" name="password" required minlength="8" ngModel #password="ngModel" [classList]="inputClass" >
+            <p class="sign-up-form__input-error"  *ngIf="!password.valid && password.touched">Invalid password</p>
+            <p class="sign-up-form__input-error" *ngIf="password.valid || !password.touched"></p>
           </div>
           <div class="sign-up-form__item">
             <label for="confirmPassword">Confirm Password</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" ngModel required [classList]="inputClass">
-            <p class="sign-up-form__input-error" *ngIf="!passwordValidator.valid"></p>
-            <p class="sign-up-form__input-error" *ngIf="passwordValidator.valid"></p>
+            <input type="password" id="confirmPassword" name="confirmPassword" ngModel #confirmPassword="ngModel" required [classList]="inputClass">
+            <p class="sign-up-form__input-error"  *ngIf="password.value !== confirmPassword.value">Passwords must be the same</p>
+            <p class="sign-up-form__input-error" *ngIf="password.value === confirmPassword.value"></p>
           </div>
         </div>
 <!--        todo: think about adding normal button but create global button scss class-->

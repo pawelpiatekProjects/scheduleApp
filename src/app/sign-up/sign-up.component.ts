@@ -19,114 +19,14 @@ export class SignUpComponent implements OnInit {
   errorMessage: string = null;
   inputClass: string = 'sign-up-form__item--blue';
 
-  nameValidator = {
-    valid: true,
-    errorMessage: ''
-  }
-  lastNameValidator = {
-    valid: true,
-    errorMessage: ''
-  }
-  emailValidator = {
-    valid: true,
-    errorMessage: ''
-  }
-  phoneValidator = {
-    valid: true,
-    errorMessage: ''
-  }
-  passwordValidator = {
-    valid: true,
-    errorMessage: ''
-  }
-  confirmPasswordValidator = {
-    valid: true,
-    errorMessage: ''
-  }
+
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  onChangeName() {
-    const {status, touched} = this.ngForm.form.controls.name
-    console.log(this.ngForm.form.controls.name);
-    if (status === 'INVALID' && touched === true) {
-      this.nameValidator = {
-        valid: false,
-        errorMessage: 'Name is invalid'
-      }
-    } else {
-      this.nameValidator = {
-        valid: true,
-        errorMessage: ''
-      }
-    }
-  }
 
-  onChangeLastName() {
-    const {status, touched} = this.ngForm.form.controls.lastName
-    console.log(status)
-    if (status === 'INVALID' && touched === true) {
-      this.lastNameValidator = {
-        valid: false,
-        errorMessage: 'Last name is invalid'
-      }
-    } else {
-      this.nameValidator = {
-        valid: true,
-        errorMessage: ''
-      }
-    }
-  }
-
-  onChangeEmail() {
-    const {status, touched} = this.ngForm.form.controls.email
-    console.log(status)
-    if (status === 'INVALID' && touched === true) {
-      this.emailValidator = {
-        valid: false,
-        errorMessage: 'Email is invalid'
-      }
-    } else {
-      this.emailValidator = {
-        valid: true,
-        errorMessage: ''
-      }
-    }
-  }
-
-  onChangePhone() {
-    const {status, touched} = this.ngForm.form.controls.phone
-    console.log(status)
-    if (status === 'INVALID' && touched === true) {
-      this.phoneValidator = {
-        valid: false,
-        errorMessage: 'Phone is invalid'
-      }
-    } else {
-      this.emailValidator = {
-        valid: true,
-        errorMessage: ''
-      }
-    }
-  }
-
-  onChangePassword() {
-    const {status, touched} = this.ngForm.form.controls.password;
-    if (status === 'INVALID' && touched === true) {
-      this.passwordValidator = {
-        valid: false,
-        errorMessage: 'Password is invalid'
-      }
-    } else {
-      this.passwordValidator = {
-        valid: true,
-        errorMessage: ''
-      }
-    }
-  }
 
 
 
