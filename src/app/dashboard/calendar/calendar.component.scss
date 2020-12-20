@@ -122,7 +122,7 @@
 
 .form-wrapper {
   width: 40%;
-  height: 60%;
+  height: 70%;
   background: $color-white;
   position: fixed;
   top: 50%;
@@ -141,7 +141,7 @@
     input {
       border: none;
       border-bottom: 2px solid $text-color-primary;
-      margin: 1.5rem 0;
+      margin: .5rem 0;
     }
 
     textarea {
@@ -157,9 +157,28 @@
     font-size: $textMedium;
     transition: all .3s;
 
+    &:disabled {
+      cursor: no-drop !important;
+      color: $color-light-secondary;
+
+    }
     &:hover {
       cursor: pointer;
     }
+
+    &:hover &:disabled{
+      cursor: no-drop ;
+    }
+
+
+  }
+
+  &__input-error {
+    font-size: $text-small;
+    color: $color-red-primary;
+    margin: .3rem 0;
+    text-align: left;
+    height: 1.8rem;
   }
 
 }

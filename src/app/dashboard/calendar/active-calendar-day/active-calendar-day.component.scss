@@ -149,7 +149,7 @@
 
 .form-wrapper {
   width: 40%;
-  height: 60%;
+  height: 80%;
   background: $color-white;
   position: fixed;
   top: 50%;
@@ -187,6 +187,14 @@
     &:hover {
       cursor: pointer;
     }
+  }
+
+  &__input-error {
+    font-size: $text-small;
+    color: $color-red-primary;
+    margin: .3rem 0;
+    height: 1.8rem;
+    text-align: left;
   }
 
 }

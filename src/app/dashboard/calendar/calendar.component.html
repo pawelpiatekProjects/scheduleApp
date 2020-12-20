@@ -36,20 +36,36 @@
   <div class="form-wrapper" *ngIf="isBackdropOpen">
     <form #f="ngForm" (ngSubmit)="onCreateEvent(f)" class="form">
       <div class="form__item">
-        <input type="text" name="name" placeholder="Event name" required ngModel>
-        <!--          <p>Please enter valid email</p>-->
+        <input type="text" name="name" placeholder="Event name" required ngModel #name=ngModel>
+        <p class="form__input-error" *ngIf="!name.valid && name.touched">Name is required</p>
+        <p class="form__input-error" *ngIf="name.valid || !name.touched"></p>
       </div>
 
       <div class="form__item">
-        <input type="date" name="date" ngModel required>
+        <input type="date" name="date" ngModel required #date="ngModel">
+        <p class="form__input-error" *ngIf="!date.valid && date.touched">Date is required</p>
+        <p class="form__input-error" *ngIf="date.valid || !date.touched"></p>
       </div>
       <div class="form__item">
-        <input type="time" name="time" ngModel required>
+        <input type="time" name="time" ngModel required #hour="ngModel">
+        <p class="form__input-error" *ngIf="!hour.valid && hour.touched">Hour is required</p>
+        <p class="form__input-error" *ngIf="hour.valid || !hour.touched"></p>
       </div>
       <div class="form__item">
-        <textarea type="text" name="description" ngModel required placeholder="Event description" rows="6"></textarea>
+        <textarea type="text" name="description" ngModel #description="ngModel" required placeholder="Event description" rows="6"></textarea>
+        <p class="form__input-error" *ngIf="!description.valid && description.touched">Description is required</p>
+        <p class="form__input-error" *ngIf="description.valid || !description.touched"></p>
       </div>
-      <button>Create</button>
+      <button [disabled]="
+        !name.valid && name.touched ||
+        name.value.length === 0 ||
+         !date.valid && date.touched ||
+         date.value.length === 0 ||
+          !hour.valid && hour.touched ||
+         hour.value.length === 0 ||
+          !description.valid && description.touched ||
+         description.value.length === 0
+        ">Create</button>
 
     </form>
   </div>

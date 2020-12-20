@@ -69,18 +69,25 @@
     <form #f="ngForm" (ngSubmit)="onEditEvent(f)" class="form" *ngIf="selectedEvent !== null">
       <div class="form__item">
 
-        <input type="text" name="name" placeholder="Event name" required [(ngModel)]="selectedEvent.event.name">
-        <!--          <p>Please enter valid email</p>-->
+        <input type="text" name="name" placeholder="Event name" #name="ngModel" required [(ngModel)]="selectedEvent.event.name">
+        <p class="form__input-error" *ngIf="!name.valid && name.touched">Name is required</p>
+        <p class="form__input-error" *ngIf="name.valid || !name.touched"></p>
       </div>
 
       <div class="form__item">
-        <input type="date" name="date" [(ngModel)]="selectedEvent.event.date" required >
+        <input type="date" name="date" #date="ngModel" [(ngModel)]="selectedEvent.event.date" required >
+        <p class="form__input-error" *ngIf="!date.valid && date.touched">Date is required</p>
+        <p class="form__input-error" *ngIf="date.valid || !date.touched"></p>
       </div>
       <div class="form__item">
-        <input type="time" name="hour" [(ngModel)]="selectedEvent.event.hour" required >
+        <input type="time" name="hour" #hour="ngModel" [(ngModel)]="selectedEvent.event.hour" required >
+        <p class="form__input-error" *ngIf="!hour.valid && hour.touched">Hour is required</p>
+        <p class="form__input-error" *ngIf="hour.valid || !hour.touched"></p>
       </div>
       <div class="form__item">
-        <textarea type="text" name="description" [(ngModel)]="selectedEvent.event.description" required placeholder="Event description" rows="6" [value]="activeEvent.description"></textarea>
+        <textarea type="text" name="description" #description="ngModel" [(ngModel)]="selectedEvent.event.description" required placeholder="Event description" rows="6" [value]="activeEvent.description"></textarea>
+        <p class="form__input-error" *ngIf="!description.valid && description.touched">Description is required</p>
+        <p class="form__input-error" *ngIf="description.valid || !description.touched"></p>
       </div>
       <button>Edit</button>
 
