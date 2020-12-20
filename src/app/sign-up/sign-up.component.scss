@@ -63,8 +63,9 @@
   &__input-error {
     font-size: $text-small;
     color: $color-red-primary;
-    margin: .3rem auto;
+    margin: .3rem 0;
     height: 1.8rem;
+    text-align: left;
   }
 
   &__server-error {
@@ -128,7 +129,28 @@
     }
   }
 
+  &__submit {
+    padding: .8rem;
+    width: 15%;
+    background: $primary-blue;
+    color: $color-light-primary;
+    border-radius: 1rem;
+    border: 2px solid $primary-blue;
+    font-size: $textMedium;
+    transition: all .3s;
 
+    &:hover {
+      background: darken($primary-blue, 10);
+      transform: scale(1.03);
+    }
+
+    &:disabled {
+      cursor: no-drop ;
+      background: $color-light-secondary;
+      opacity: .8;
+      border: none;
+    }
+  }
 
 }
 

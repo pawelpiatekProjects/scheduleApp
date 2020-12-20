@@ -20,52 +20,68 @@
         <div class="sign-up-form__row">
           <div class="sign-up-form__item">
             <label for="name">Name</label>
-            <input type="text" id="name" name="name" required ngModel #name="ngModel" minlength="3" [classList]="inputClass" >
-            <p class="sign-up-form__input-error" *ngIf="!name.valid && name.touched">Invalid name</p>
+            <input type="text" id="name" name="name" required ngModel #name="ngModel" [classList]="inputClass">
+            <p class="sign-up-form__input-error" *ngIf="!name.valid && name.touched">Name is required</p>
             <p class="sign-up-form__input-error" *ngIf="name.valid || !name.touched"></p>
 
           </div>
           <div class="sign-up-form__item">
             <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" name="lastName" ngModel #lastName="ngModel" required [classList]="inputClass" >
-            <p class="sign-up-form__input-error"  *ngIf="!lastName.valid && lastName.touched">Invalid last name</p>
+            <input type="text" id="lastName" name="lastName" ngModel #lastName="ngModel" required
+                   [classList]="inputClass">
+            <p class="sign-up-form__input-error" *ngIf="!lastName.valid && lastName.touched">Last name is required</p>
             <p class="sign-up-form__input-error" *ngIf="lastName.valid || !lastName.touched"></p>
           </div>
         </div>
         <div class="sign-up-form__row">
           <div class="sign-up-form__item">
             <label for="email">E-mail</label>
-            <input type="text" id="email" name="email"  required ngModel #email="ngModel" [classList]="inputClass" >
-            <p class="sign-up-form__input-error"  *ngIf="!email.valid && email.touched">Invalid email</p>
+            <input type="text" id="email" name="email" required ngModel #email="ngModel" [classList]="inputClass">
+            <p class="sign-up-form__input-error" *ngIf="!email.valid && email.touched">Invalid email</p>
             <p class="sign-up-form__input-error" *ngIf="email.valid || !email.touched"></p>
           </div>
           <div class="sign-up-form__item">
             <label for="phone">Phone Number</label>
-            <input type="text" id="phone" name="phone" ngModel #phone="ngModel" required [classList]="inputClass" >
-            <p class="sign-up-form__input-error"  *ngIf="!phone.valid && phone.touched">Invalid phone</p>
+            <input type="number" id="phone" name="phone" minlength="9" ngModel #phone="ngModel" required
+                   [classList]="inputClass">
+            <p class="sign-up-form__input-error" *ngIf="!phone.valid && phone.touched">Phone number is to short</p>
             <p class="sign-up-form__input-error" *ngIf="phone.valid || !phone.touched"></p>
           </div>
         </div>
         <div class="sign-up-form__row margin-bottom">
           <div class="sign-up-form__item">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" required minlength="8" ngModel #password="ngModel" [classList]="inputClass" >
-            <p class="sign-up-form__input-error"  *ngIf="!password.valid && password.touched">Invalid password</p>
+            <input type="password" id="password" name="password" required minlength="8" ngModel #password="ngModel"
+                   [classList]="inputClass">
+            <p class="sign-up-form__input-error" *ngIf="!password.valid && password.touched">Password is to short</p>
             <p class="sign-up-form__input-error" *ngIf="password.valid || !password.touched"></p>
           </div>
           <div class="sign-up-form__item">
             <label for="confirmPassword">Confirm Password</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" ngModel #confirmPassword="ngModel" required [classList]="inputClass">
-            <p class="sign-up-form__input-error"  *ngIf="password.value !== confirmPassword.value">Passwords must be the same</p>
+            <input type="password" id="confirmPassword" name="confirmPassword" ngModel #confirmPassword="ngModel"
+                   required [classList]="inputClass">
+            <p class="sign-up-form__input-error" *ngIf="password.value !== confirmPassword.value">Passwords must be the
+              same</p>
             <p class="sign-up-form__input-error" *ngIf="password.value === confirmPassword.value"></p>
           </div>
         </div>
-<!--        todo: think about adding normal button but create global button scss class-->
-          <app-button-primary
-            message="Create Account"
-            styles = 'button-blue'
-            type="submit"
-          ></app-button-primary>
+        <button class="sign-up-form__submit" type="submit"
+                [disabled]="
+                !name.valid && name.touched ||
+                name.value.length === 0 ||
+                 !lastName.valid && lastName.touched ||
+                 lastName.value.length === 0 ||
+                  !email.valid && email.touched ||
+                  email.value.length === 0 ||
+                   !phone.valid && phone.touched ||
+                   phone.value.length === 0 ||
+                    !password.valid && password.touched ||
+                    password.value.length === 0 ||
+                    confirmPassword.value.length === 0 ||
+                     password.value !==confirmPassword.value"
+        >
+          Create
+        </button>
         <div class="sign-up-form__sign-in">
           <p>Already have an account?</p>
           <a routerLink="/sign-in">Sign-in</a>
@@ -76,14 +92,14 @@
   <ng-template [ngIf]="isLoading">
     <app-spinner></app-spinner>
   </ng-template>
-<!--  todo: change to backdrop component-->
+  <!--  todo: change to backdrop component-->
 
-    <div class="backdrop" *ngIf="isAccountCreated">
-      <div class="backdrop__info">
-        <h1>Account has been created successfully</h1>
-        <span class="material-icons">check_circle</span>
-        <button (click)="onNavigateToSignIn()">Sign In</button>
-      </div>
+  <div class="backdrop" *ngIf="isAccountCreated">
+    <div class="backdrop__info">
+      <h1>Account has been created successfully</h1>
+      <span class="material-icons">check_circle</span>
+      <button (click)="onNavigateToSignIn()">Sign In</button>
     </div>
+  </div>
 
 </div>

@@ -128,6 +128,17 @@
         outline: none;
         transform: scale(1);
       }
+
+      &:disabled {
+        cursor: no-drop ;
+        background: $color-light-secondary;
+        opacity: .8;
+        border: none;
+      }
+
+      &:disabled &:hover {
+        transform: scale(1);
+      }
     }
 
     &__create-new {
@@ -151,7 +162,8 @@
     &__input-error {
       font-size: $text-small;
       color: $color-red-primary;
-      margin: .3rem auto;
+      margin: .3rem 0;
+      text-align: left;
     }
   }
 }
