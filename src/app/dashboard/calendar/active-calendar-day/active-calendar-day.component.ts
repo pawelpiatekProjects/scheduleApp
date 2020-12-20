@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {DatesService, Day} from "../../../services/dates.service";
 import {UiService} from "../../../services/ui.service";
 import {Event, EventsService} from '../../../services/events.service';
@@ -16,6 +16,7 @@ export class ActiveCalendarDayComponent implements OnInit , OnDestroy{
   constructor(private datesService: DatesService, private uiService: UiService, private eventsService: EventsService, private router: Router) { }
 
   @Input()activeDay: Day;
+  @ViewChild('f', {static: true}) ngForm: NgForm;
   day: string;
   activeDayEvents: Event[];
   eventsSubscription: Subscription = null;
@@ -42,7 +43,7 @@ export class ActiveCalendarDayComponent implements OnInit , OnDestroy{
   onOpenEditForm(event: Event): void {
     this.activeEvent = event;
     this.isEditBackdropOpen = true;
-
+    console.log(this.ngForm)
   }
 
   onOpenDeleteModal(event: Event) {
