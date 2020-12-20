@@ -19,10 +19,10 @@
       <div class="selected-event__header">
         <h3>{{selectedEvent.event.name}}t</h3>
         <div class="selected-event__buttons">
-          <button class="selected-event__button selected-event__button--red">
+          <button class="selected-event__button selected-event__button--red" (click)="onOpenDeleteModal()">
             <span class="material-icons">delete</span>
           </button>
-          <button class="selected-event__button selected-event__button--blue">
+          <button class="selected-event__button selected-event__button--blue" (click)="onOpenEditModal()">
             <span class="material-icons">more_horiz</span>
           </button>
         </div>
@@ -63,6 +63,36 @@
   <ng-template [ngIf]="isLoading">
     <app-spinner></app-spinner>
   </ng-template>
+  <div class="backdrop" *ngIf="isEditBackdropOpen" (click)="onCloseEditBackdrop()"></div>
+  <div class="backdrop" *ngIf="isDeleteBackdropOpen" (click)="onCloseDeleteBackdrop()"></div>
+  <div class="form-wrapper" *ngIf="isEditBackdropOpen">
+    <form #f="ngForm" (ngSubmit)="onEditEvent(f)" class="form" *ngIf="selectedEvent !== null">
+      <div class="form__item">
 
+        <input type="text" name="name" placeholder="Event name" required ngModel>
+        <!--          <p>Please enter valid email</p>-->
+      </div>
+
+      <div class="form__item">
+        <input type="date" name="date" ngModel required >
+      </div>
+      <div class="form__item">
+        <input type="time" name="hour" ngModel required >
+      </div>
+      <div class="form__item">
+        <textarea type="text" name="description" ngModel required placeholder="Event description" rows="6" [value]="activeEvent.description"></textarea>
+      </div>
+      <button>Edit</button>
+
+    </form>
+  </div>
+  <div class="delete-modal" *ngIf="isDeleteBackdropOpen">
+    <h1 class="delete-modal__header">Delete Event</h1>
+    <p class="delete-modal__text">Are you sure?</p>
+    <div class="delete-modal__buttons">
+      <button class="delete-modal__button">Cancel</button>
+      <button class="delete-modal__button delete-modal__button--red" (click)="onDeleteEvent()">Delete</button>
+    </div>
+  </div>
 
 </div>

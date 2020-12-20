@@ -1,6 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {EventsService, Event} from "../../../services/events.service";
 import {Subscription} from "rxjs";
+import {NgForm} from "@angular/forms";
+import {Router} from "@angular/router";
 
 interface Hour {
   hour: string,
@@ -21,8 +23,10 @@ export class TodayComponent implements OnInit, OnDestroy {
   selectedEvent: Hour = null;
   selectedEventHoursArr: string[] = null;
   isLoading: boolean = false;
+  isEditBackdropOpen = false;
+  isDeleteBackdropOpen = false;
 
-  constructor(private eventsService: EventsService) {
+  constructor(private eventsService: EventsService, private router: Router) {
   }
 
 
@@ -74,6 +78,7 @@ export class TodayComponent implements OnInit, OnDestroy {
     const {event: {_id}} = hour;
     if (_id.length !== 0) {
       this.selectedEvent = hour;
+      console.log('selected hour: ', hour);
       const eventHour = this.selectedEvent.hour.slice(0,2);
       let previousEventHour;
       let nextEvenHour;
@@ -89,6 +94,46 @@ export class TodayComponent implements OnInit, OnDestroy {
       console.log('hour: ', eventHour);
       this.selectedEventHoursArr = [previousEventHour, eventHour, nextEvenHour];
     }
+  }
+
+  onCloseDeleteBackdrop() {
+    this.isDeleteBackdropOpen = false;
+  }
+
+  onCloseEditBackdrop() {
+    this.isEditBackdropOpen = false;
+  }
+
+  onOpenEditModal() {
+    this.isEditBackdropOpen = true;
+  }
+
+  onOpenDeleteModal() {
+    this.isDeleteBackdropOpen = true;
+  }
+
+  onDeleteEvent() {
+    this.eventsService.deleteEvent(this.selectedEvent.event._id).subscribe(res => {
+      this.eventsService.fetchEvents().subscribe();
+      this.router.navigateByUrl('/dashboard');
+      this.onCloseDeleteBackdrop();
+      this.selectedEvent = null;
+    })
+  }
+
+
+
+  onEditEvent(form: NgForm) {
+    const  {value: {name, date, hour, description}} = form;
+    this.eventsService.editEvent(this.selectedEvent.event._id, name, date, hour, description).subscribe(res => {
+      console.log(res);
+      this.eventsService.fetchEvents().subscribe(res => {
+        console.log(res);
+        this.onCloseEditBackdrop();
+        this.router.navigateByUrl('/dashboard');
+        this.selectedEvent = null;
+      })
+    })
   }
 
 
