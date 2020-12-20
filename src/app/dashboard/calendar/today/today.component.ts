@@ -26,6 +26,14 @@ export class TodayComponent implements OnInit, OnDestroy {
   isEditBackdropOpen = false;
   isDeleteBackdropOpen = false;
 
+  //----
+  activeEvent: {
+    name: string,
+    date: string,
+    hour: string,
+    description: string
+  } = null
+
   constructor(private eventsService: EventsService, private router: Router) {
   }
 
@@ -67,7 +75,6 @@ export class TodayComponent implements OnInit, OnDestroy {
     })
   }
 
-  //todo add event description
 
   onSelectEvent(hour: Hour) {
     const {event: {_id}} = hour;
@@ -116,6 +123,7 @@ export class TodayComponent implements OnInit, OnDestroy {
 
   onEditEvent(form: NgForm) {
     const  {value: {name, date, hour, description}} = form;
+
     this.eventsService.editEvent(this.selectedEvent.event._id, name, date, hour, description).subscribe(res => {
       this.eventsService.fetchEvents().subscribe(res => {
         this.onCloseEditBackdrop();

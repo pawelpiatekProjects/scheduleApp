@@ -69,18 +69,18 @@
     <form #f="ngForm" (ngSubmit)="onEditEvent(f)" class="form" *ngIf="selectedEvent !== null">
       <div class="form__item">
 
-        <input type="text" name="name" placeholder="Event name" required ngModel>
+        <input type="text" name="name" placeholder="Event name" required [(ngModel)]="selectedEvent.event.name">
         <!--          <p>Please enter valid email</p>-->
       </div>
 
       <div class="form__item">
-        <input type="date" name="date" ngModel required >
+        <input type="date" name="date" [(ngModel)]="selectedEvent.event.date" required >
       </div>
       <div class="form__item">
-        <input type="time" name="hour" ngModel required >
+        <input type="time" name="hour" [(ngModel)]="selectedEvent.event.hour" required >
       </div>
       <div class="form__item">
-        <textarea type="text" name="description" ngModel required placeholder="Event description" rows="6" [value]="activeEvent.description"></textarea>
+        <textarea type="text" name="description" [(ngModel)]="selectedEvent.event.description" required placeholder="Event description" rows="6" [value]="activeEvent.description"></textarea>
       </div>
       <button>Edit</button>
 
