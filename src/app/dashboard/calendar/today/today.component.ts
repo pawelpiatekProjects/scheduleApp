@@ -33,24 +33,19 @@ export class TodayComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.eventsService.getEvents().subscribe(events => {
       this.isLoading = true;
-      console.log(events);
       if (events !== null) {
         this.hours = [];
         const today = new Date().toLocaleDateString().split('.').reverse().join('-');
-        const todayEvents = events.filter(event => event.date === today);
-        console.log('events', todayEvents);
-        this.todayEvents = todayEvents;
+        this.todayEvents= events.filter(event => event.date === today);
+
 
         for (let i = 0; i < 24; i++) {
           const hour = i.toString().length == 1 ? `0${i}:00` : `${i}:00`;
-          console.log('hour: ', hour);
-          console.log(hour.slice(0, 2));
           const ev = this.todayEvents.find(event => {
             if(event !== null) {
               return event.hour.slice(0, 2) === hour.slice(0, 2);
             }
           });
-          console.log(ev);
           if (ev) {
             this.hours.push({hour: hour, event: ev});
           } else {
@@ -78,20 +73,16 @@ export class TodayComponent implements OnInit, OnDestroy {
     const {event: {_id}} = hour;
     if (_id.length !== 0) {
       this.selectedEvent = hour;
-      console.log('selected hour: ', hour);
       const eventHour = this.selectedEvent.hour.slice(0,2);
       let previousEventHour;
       let nextEvenHour;
       if(eventHour[0] === '0' && parseInt(eventHour[1]) !== 9){
         previousEventHour = '0'+(parseInt(eventHour[1]) - 1).toString();
         nextEvenHour = '0'+(parseInt(eventHour[1]) + 1).toString();
-        console.log(previousEventHour);
       } else {
         previousEventHour = parseInt(eventHour) - 1;
         nextEvenHour = parseInt(eventHour) + 1;
-        console.log(previousEventHour);
       }
-      console.log('hour: ', eventHour);
       this.selectedEventHoursArr = [previousEventHour, eventHour, nextEvenHour];
     }
   }
@@ -126,9 +117,7 @@ export class TodayComponent implements OnInit, OnDestroy {
   onEditEvent(form: NgForm) {
     const  {value: {name, date, hour, description}} = form;
     this.eventsService.editEvent(this.selectedEvent.event._id, name, date, hour, description).subscribe(res => {
-      console.log(res);
       this.eventsService.fetchEvents().subscribe(res => {
-        console.log(res);
         this.onCloseEditBackdrop();
         this.router.navigateByUrl('/dashboard');
         this.selectedEvent = null;
@@ -140,7 +129,6 @@ export class TodayComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.eventsSubscription !== null) {
       this.eventsSubscription.unsubscribe();
-
     }
   }
 }

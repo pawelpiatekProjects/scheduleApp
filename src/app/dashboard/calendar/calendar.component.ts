@@ -65,9 +65,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
     const {value: {name, date, time, description}} = form;
 
     this.eventsService.createEvent(name, date, time, description).subscribe(res => {
-      console.log(res);
       this.eventsService.fetchEvents().subscribe(res => {
-        console.log(res);
         this.onCloseBackdrop();
       });
     })

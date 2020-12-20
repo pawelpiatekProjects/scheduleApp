@@ -19,7 +19,6 @@ export class UserDataComponent implements OnInit, OnDestroy {
     this.userSubscription = this.userService.getUserData().subscribe(user => {
       if(user !== null) {
         this.user = user;
-        console.log('user in user data: ',this.user);
       }
 
     })

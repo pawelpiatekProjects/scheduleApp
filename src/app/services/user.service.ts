@@ -26,7 +26,6 @@ export class UserService {
       url: `user/${id}`
     }).pipe(tap(({user}) => {
       this.user.next(user);
-      console.log(user)
     }))
   }
 

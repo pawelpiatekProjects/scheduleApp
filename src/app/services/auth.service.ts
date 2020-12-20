@@ -34,7 +34,6 @@ export class AuthService {
       }
     }).pipe(tap(user => {
       this.user.next(user);
-      console.log(this.user.value);
       localStorage.setItem('userId', this.user.value.userId);
       localStorage.setItem('token', this.user.value.token);
     }));

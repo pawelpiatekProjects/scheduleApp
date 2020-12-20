@@ -26,7 +26,6 @@ export class SignUpComponent implements OnInit {
 
 
   onSignUp(form: NgForm) {
-    console.log(form.value)
     const {value: {email, name, lastName, phone, password, confirmPassword}} = form;
     this.isLoading = true;
     this.authService.signUp(name, lastName, email, phone, password)
@@ -40,7 +39,6 @@ export class SignUpComponent implements OnInit {
       .subscribe(res => {
         this.isLoading = false;
         this.isAccountCreated = true;
-      console.log(res);
     })
   }
 

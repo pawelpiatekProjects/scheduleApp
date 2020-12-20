@@ -85,7 +85,6 @@ export class ThisWeekComponent implements OnInit, OnDestroy{
   }
 
   onDayClick(day: Day) {
-    console.log(day);
     this.activeDay = day;
   }
 

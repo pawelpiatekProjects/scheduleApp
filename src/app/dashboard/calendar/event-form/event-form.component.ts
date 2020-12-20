@@ -44,7 +44,6 @@ export class EventFormComponent implements OnInit, OnDestroy {
       }
 
     })
-    console.log(this.mode);
 
   }
 
@@ -53,23 +52,17 @@ export class EventFormComponent implements OnInit, OnDestroy {
       const {value: {name, date, time, description}} = form;
 
       this.eventsService.createEvent(name, date, time, description).subscribe(res => {
-        console.log(res);
         this.eventsService.fetchEvents().subscribe(res => {
-          console.log(res);
         });
       })
 
     } else if(this.mode === 'edit') {
       const eventId = this.uiService.activeDayId.value;
       this.activeEvent = this.eventsService.getEventById(eventId);
-      console.log('active event', this.activeEvent);
     } else {
         const eventId = this.uiService.activeDayId.value;
-        console.log('eventId: ', eventId)
         this.eventsService.deleteEvent(eventId).subscribe(res => {
-          console.log(res);
           this.eventsService.fetchEvents().subscribe(res => {
-            console.log(res);
           })
         })
     }

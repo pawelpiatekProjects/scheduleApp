@@ -26,7 +26,6 @@ export class DatesService {
   setWeek(date: Date): Day[] {
     const daysArray: Day[] = [];
     const dayNumber = date.getDay();
-    console.log('day number', dayNumber)
 
     const monday =  new Date(date);
     if(dayNumber !== 1) {

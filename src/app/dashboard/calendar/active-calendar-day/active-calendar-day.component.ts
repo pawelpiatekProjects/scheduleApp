@@ -26,7 +26,6 @@ export class ActiveCalendarDayComponent implements OnInit , OnDestroy{
   ngOnInit() {
     this.day = this.activeDay.date.split('.').map(el => parseInt(el))[0].toString();
     this.activeDayEvents = this.activeDay.events.map(event => event.event);
-    console.log('active day events', this.activeDayEvents);
     this.eventsSubscription = this.eventsService.getEvents().subscribe(events => {
       this.activeDayEvents = events.filter(event => event.date === this.activeDay.date.split('.').reverse().join('-'))
     })
@@ -35,14 +34,12 @@ export class ActiveCalendarDayComponent implements OnInit , OnDestroy{
   ngOnChanges(changes: SimpleChanges) {
     this.day = this.activeDay.date.split('.').map(el => parseInt(el))[0].toString();
     this.activeDayEvents = this.activeDay.events.map(event => event.event);
-    console.log('active day events', this.activeDayEvents);
     this.eventsSubscription = this.eventsService.getEvents().subscribe(events => {
       this.activeDayEvents = events.filter(event => event.date === this.activeDay.date.split('.').reverse().join('-'))
     })
   }
 
   onOpenEditForm(event: Event): void {
-    // this.uiService.onOpenEditEvent(id);
     this.activeEvent = event;
     this.isEditBackdropOpen = true;
 
@@ -66,9 +63,7 @@ export class ActiveCalendarDayComponent implements OnInit , OnDestroy{
   onEditEvent(form: NgForm) {
       const  {value: {name, date, hour, description}} = form;
       this.eventsService.editEvent(this.activeEvent._id, name, date, hour, description).subscribe(res => {
-        console.log(res);
         this.eventsService.fetchEvents().subscribe(res => {
-          console.log(res);
           this.onCloseEditBackdrop();
           this.router.navigateByUrl('/dashboard');
         })

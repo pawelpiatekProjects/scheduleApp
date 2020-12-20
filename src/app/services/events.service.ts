@@ -49,7 +49,6 @@ export class EventsService {
   }
 
   deleteEvent(id: string) {
-    console.log('event id from event service: ', id);
     const userId = localStorage.getItem('userId');
     return this.restService.post<any>({
       url: 'events/delete',
