@@ -28,7 +28,7 @@ import {AuthInterceptorService} from "./services/auth-interceptor.service";
   ],
   providers: [
     DatesService,
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true  }
+    // {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true  }
   ],
   bootstrap: [AppComponent]
 })

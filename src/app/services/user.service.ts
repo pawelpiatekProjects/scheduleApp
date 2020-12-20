@@ -22,8 +22,12 @@ export class UserService {
   constructor(private restService: RestService) { }
 
   fetchUserData(id: string) {
+    const token = localStorage.getItem('token');
     return this.restService.get<any>({
-      url: `user/${id}`
+      url: `user/${id}`,
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
     }).pipe(tap(({user}) => {
       this.user.next(user);
     }))

@@ -28,6 +28,7 @@ export class EventsService {
 
   createEvent(name: string, date: string, hour: string, description: string) {
     const userId = localStorage.getItem('userId');
+    const token = localStorage.getItem('token');
     return this.restService.post<any>({
       url: 'events/new',
       data: {
@@ -36,13 +37,20 @@ export class EventsService {
         hour: hour,
         description: description,
         userId: userId
+      },
+      headers: {
+        Authorization: 'Bearer ' + token
       }
     });
   }
 
   fetchEvents() {
+    const token = localStorage.getItem('token');
     return this.restService.get<any>({
-      url: 'events/all'
+      url: 'events/all',
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
     }).pipe(tap(({events}) => {
       this.events.next(events);
     }))
@@ -50,11 +58,15 @@ export class EventsService {
 
   deleteEvent(id: string) {
     const userId = localStorage.getItem('userId');
+    const token = localStorage.getItem('token');
     return this.restService.post<any>({
       url: 'events/delete',
       data: {
         eventId: id,
         userId: userId
+      },
+      headers: {
+        Authorization: 'Bearer ' + token
       }
     })
   }
@@ -69,6 +81,7 @@ export class EventsService {
 
   editEvent(id: string, name, date, hour,description) {
     const userId = localStorage.getItem('userId');
+    const token = localStorage.getItem('token');
     return this.restService.put<any>({
       url: 'events/edit',
       data: {
@@ -78,6 +91,9 @@ export class EventsService {
         hour: hour,
         description: description,
         userId: userId
+      },
+      headers: {
+        Authorization: 'Bearer ' + token
       }
     })
   }
