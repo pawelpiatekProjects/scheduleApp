@@ -147,5 +147,11 @@
         color: $primary-blue;
       }
     }
+
+    &__input-error {
+      font-size: $text-small;
+      color: $color-red-primary;
+      margin: .3rem auto;
+    }
   }
 }

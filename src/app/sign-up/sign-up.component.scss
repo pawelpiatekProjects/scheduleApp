@@ -60,6 +60,13 @@
 .sign-up-form {
   width: 90%;
 
+  &__input-error {
+    font-size: $text-small;
+    color: $color-red-primary;
+    margin: .3rem auto;
+    height: 1.8rem;
+  }
+
   &__server-error {
     color: $color-red-primary;
     text-align: center;
@@ -120,6 +127,7 @@
       color: $primary-blue;
     }
   }
+
 
 
 }
