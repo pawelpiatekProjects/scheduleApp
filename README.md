@@ -1,9 +1,12 @@
-Application not ready yet
+<h1 align="center" style="color:#ff0000">
+  ⚙ Application during development ⚙
+  
+</h1>
+
+
 
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
- 
-</p>
+
 <h1 align="center">
   Schedule App
 </h1>
